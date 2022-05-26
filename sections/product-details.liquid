@@ -1,0 +1,421 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<section class="single-product-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="tab-zoom">
+              <!-- Tab panes -->
+              <div class="tab-content">
+
+                <div >
+
+                  <div class="s_big">
+
+                    {% assign featured_image = current_variant.featured_image | default: product.featured_image  %}
+
+
+                    <img class="product_zoom" data-image="{{ featured_image | img_url: 'master' }}" data-zoom-image="{{ featured_image | img_url: 'master' }}" src="{{ featured_image | img_url: 'master' }}" alt="" id="ProductPhotoImg">
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              {% if product.images.size > 1 %}
+              <div class="thumnail-image fix">
+                <ul class="tab-menu product-thumb" id="gallery_01">
+                  {% for image in product.images %}
+                  <li><a data-image="{{ image.src | img_url: 'large' }}" data-zoom-image="{{ image.src | img_url: 'master' }}" data-toggle="tab" href="{{ image.src | img_url: 'master' }}" class="product-single__thumbnail">
+                    <img alt="" src="{{ image.src | img_url: 'small' }}" >
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+            
+           
+            
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="entry-summary">
+			<div class="pro-rat">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              </div>
+              <div class="entry-title">{{ product.title }}</div>
+              <div class="tb-product-wrap-price-rating">
+                <div class="tb-product-price font-noraure-3 nurore">
+
+
+
+                  <span class="amount2 ana" id="ProductPrice">{{ product.selected_or_first_available_variant.price | money }}</span>
+
+                  {% if product.compare_at_price_max > product.price %}
+                  <del><span class="amount2 ana" id="ComparePrice">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span></del>
+                  {% endif %}
+
+                </div>
+                <div class="stock">
+                  Avaiability:
+                  <span> {% if product.available %}InStock{% else %}OutOfStock{% endif %}</span>
+                </div>
+              </div>
+              
+              SKU: {{ current_variant.sku }}
+              
+              
+              <div class="description">
+               
+                
+                {% if product.description contains '[short_description]' %}
+                {% assign short_description_first = product.description | split: '[/short_description]' | first %}
+                {% assign short_description_final = short_description_first | split: '[short_description]' | last %}
+                {{ short_description_final }}
+                {% endif %}
+                
+                
+                {% comment %}
+                {{ product.description | truncatewords: 30 }}
+                {% endcomment %}
+              </div>
+
+
+              <form action="/cart/add" method="post" enctype="multipart/form-data" class="woocommerce-shipping-calculator" id="add-item-form">
+                <p class="form-row form-row-wide">
+
+
+				<select name="id" id="productSelect" class="email s-email s-wid" style="display: none; !important">
+
+                    {% for variant in product.variants %}
+
+                    {% if variant.available %}
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                    {% else %}
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} disabled="disabled" data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - sold out</option>
+                    {% endif %}
+                    {% endfor %}
+
+                  </select>
+                  
+                  
+                  
+                  {% if product.available and product.variants.size > 1 %}
+                  {% for option in product.options %}
+                  {% include 'swatch' with option %}
+                  {% endfor %}
+                  {% endif %}                    
+                  <script>
+                    jQuery(function() {
+                      jQuery('.swatch :radio').change(function() {
+                        var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+                        var optionValue = jQuery(this).val();
+                        jQuery(this)
+                        .closest('form')
+                        .find('.single-option-selector')
+                        .eq(optionIndex)
+                        .val(optionValue)
+                        .trigger('change');
+                      });
+                    });
+                  </script> 
+
+
+
+                </p>
+
+
+
+
+
+                <div class="single-price">
+
+                  <div class="ro-quantity clearfix">
+                    <label>
+                      Qty:
+                      <span class="s-color"> *</span>
+                    </label>
+                    <div class="quantity">
+                      <div class="cart-plus-minus">
+                        <input type="text" value="1" name="quantity" class="cart-plus-minus-box">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="add-two-single">
+
+                    <div class="last-cart l-mrgn ns">
+                      <button class="las4 addtocart" name="add" id="AddToCart">Add To Cart</button>
+                    </div>
+
+                    <script>
+                      jQuery('.addtocart').click(function(e) {
+                        e.preventDefault();
+                        Shopify.addItemFromFormStart('add-item-form', {{ product.id }});
+                                                     });
+                    </script>
+
+
+                    <div class="tb-product-btn shp">
+                      <a href="#">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                      
+                      
+                      {% include 'wishlist-button' %}
+                      
+                      
+                      
+                      <a href="#">
+                        <i class="fa fa-retweet"></i>
+                      </a>
+                    </div>
+
+
+
+
+                  </div>
+                  <div class="capture-pn">
+                    <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox_4v89"></div>
+                  </div>
+                  
+                  
+                  {% include 'social-share' %}
+                  
+                  
+                </div>
+
+
+              </form>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+		
+        {% include 'recent-view' %}
+
+      </div>
+    </div>   
+
+    <div class="text-sin">
+      <!-- Nav tabs -->
+      <ul role="tablist">
+
+        {% if section.settings.product_description %}
+        <li role="presentation" class="active">
+          <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a>
+        </li>
+        {% endif %}
+        {% if section.settings.product_info %}
+        <li role="presentation">
+          <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Additional Information</a>
+        </li>
+        {% endif %}
+        <li role="presentation">
+          <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Reviews (0)</a>
+        </li>
+        <li role="presentation">
+          <a href="#tag" aria-controls="tag" role="tab" data-toggle="tab"> TAGS</a>
+        </li>
+        {% if product.description contains '[product_video]' %}
+        <li role="presentation">
+          <a href="#video" aria-controls="video" role="tab" data-toggle="tab"> Video</a>
+        </li>
+        {% endif %}
+        
+        
+        <li role="presentation">
+          <a href="#comment" aria-controls="video" role="tab" data-toggle="tab"> Comment</a>
+        </li>
+        
+        
+        <li role="presentation">
+          <a href="#fb-comment" aria-controls="video" role="tab" data-toggle="tab"> FB Comment</a>
+        </li>
+        
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+
+        {% if section.settings.product_description %}
+        <div role="tabpanel" class="tab-pane active sin-ha" id="home">
+
+          {% if product.description contains '[product_description]' %}
+          {% assign product_description_first = product.description | split: '[product_description]' | last %}
+          {% assign product_description_final = product_description_first | split: '[/product_description]' | first %}
+          {{ product_description_final }}
+          {% endif %}
+          
+          
+          {% comment %}
+          {{ product.content }}
+          {% endcomment %}
+        </div>
+        {% endif %}
+        {% if section.settings.product_info %}
+        <div role="tabpanel" class="tab-pane sin-ha" id="profile">
+          <h2>Additional Information</h2>
+          <table class="shop_attributes">
+            <tbody>
+              <tr class="">
+                <th>Product Id</th>
+                <td>
+                  <p>{{ product.id }}</p>
+                </td>
+              </tr>
+              <tr class="alt">
+                <th>Product SKU</th>
+                <td>
+
+                  <p>{{ product.sku }}</p>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {% endif %}
+
+
+        <div role="tabpanel" class="tab-pane sin-ha" id="messages">
+          <!-- Product Review -->
+          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tag">
+          <span class="tagged_as">
+            Tag:
+            <a rel="tag" href="#">Featured</a>
+          </span>
+        </div>
+        
+        
+        
+        {% if product.description contains '[product_video]' %}
+        <div role="tabpanel" class="tab-pane" id="video">
+          <div class="post-format-area">
+            <div class="blog_video embed-responsive embed-responsive-16by9">
+              
+              {% assign product_video_first = product.description | split: '[/product_video]' | first %}
+              {% assign product_video_final = product_video_first | split: '[product_video]' | last %}
+              
+              
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ product_video_final }}" frameborder="0" allowfullscreen></iframe>
+              
+              
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        
+        
+        
+        <div role="tabpanel" class="tab-pane" id="comment">
+          
+          
+          <div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://batch-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+          
+          
+          
+          
+        </div>
+        
+        
+        
+        <div role="tabpanel" class="tab-pane" id="fb-comment">
+          <div class="fb-comments" data-href="{{ shop.url }}{{ product.url }}" data-numposts="5"></div>
+        </div>
+        
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+{% include 'related-products' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+{
+"name": "Product page",
+"settings": [
+{
+"type": "text",
+"id": "video_id",
+"label": "Youtube video",
+"default": "FnCdOQsX5kc"
+},
+{
+"type": "checkbox",
+"id": "product_description",
+"label": "Show Description"
+},
+{
+"type": "checkbox",
+"id": "product_info",
+"label": "Show Info"
+}
+
+
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

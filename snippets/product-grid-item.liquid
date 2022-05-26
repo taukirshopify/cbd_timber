@@ -1,0 +1,153 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+{% assign sold_out = false %}
+{% endif %}
+
+
+{% assign variant = product.selected_or_first_available_variant %}
+
+{% if product.available %}
+{% assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" %}
+{% endif %} 
+
+
+
+<div class="tb-product-item-inner tb2 pct-last">
+
+  {% comment %}
+
+  {% if on_sale %}
+  <span class="onsale two"> {{ product.price | times: 100 | divided_by: product.compare_at_price | minus: 100 | abs }}% off </span>
+  {% else %}
+  <span class="onsale">{{ 'products.product.new' | t }}</span>
+  {% endif %}
+
+  {% endcomment %}
+
+
+  {% if on_sale %}
+  <span class="onsale two"> {{ product.price | times: 100 | divided_by: product.compare_at_price | minus: 100 | abs }}% off </span>
+  {% endif %}
+
+
+  <!-- product new label/stiker with shortcode start -->
+  {% if product.description contains '[new_products]' %}      
+  {% assign new_products_first = product.description | split:'[/new_products]' | first %}
+  {% assign new_products_final = new_products_first | split:'[new_products]' | last %} 
+
+  {% comment %}Date calculate{% endcomment %}
+  {% assign date_pub_y = product.published_at | date:'%Y' %}
+  {% assign date_pub_d = product.published_at | date:'%j' %}
+  {% assign date_now_y = 'now' | date:'%Y' %}
+  {% assign date_now_d = 'now' | date:'%j' %}
+  {% assign dates_diff_y = date_now_y | minus: date_pub_y | times: 365 %}
+  {% assign dates_diff_d = date_now_d | minus: date_pub_d %}
+  {% assign dates_diff = dates_diff_y | plus: dates_diff_d %}
+  {% assign new_products_period = new_products_final | plus: 0 %} 
+
+  {% if dates_diff <= new_products_period %}
+  <span class="onsale">{{ 'products.product.new' | t }}</span>
+  {% endif %}      
+  {% endif %}
+
+
+
+
+
+
+  {% if product.images.size > 1 %}
+  <img class="primary-image" alt="" src="{{ product.featured_image.src | img_url: 'large' }}">
+  {% for image in product.images limit: 1 offset: 1 %}
+  <img class="secondry-image" alt="" src="{{ image.src | img_url: 'large' }}">
+  {% endfor %}
+  {% else %}
+  <img class="" alt="" src="{{ product.featured_image.src | img_url: 'large' }}">
+  {% endif %}
+
+
+  <a class="la-icon" href="javascript:void(0);" onclick="quiqview('{{ product.handle | handleize }}')" title="Quick View" data-toggle="modal"><i class="fa fa-eye"></i></a>
+
+
+  <div class="tb-content">
+    <div class="tb-it">
+      <div class="tb-beg">
+        <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+      </div>
+      <div class="tb-product-wrap-price-rating">
+        <div class="tb-product-price font-noraure-3">
+          {% if on_sale %}
+          <span class="amount2 ana">{{ product.price | money }} - </span>
+          <span class="amount2 ana"><del>{{ product.compare_at_price | money }}</del></span>
+          {% else %}
+          <span class="amount2 ana">{{ product.price | money }} </span>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="last-cart l-mrgn">
+
+        <a class="las3" href="#"><i class="fa fa-heart"></i></a>
+
+
+        {% if settings.ajax_cart_method == "drawer" %}
+
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+
+          <select style="display: none;" name="id">
+
+            {% for variant in product.variants %}
+            <option value="{{ variant.id }}"> {{ variant.title }} - {{ variant.price | money }} </option>
+            {% endfor %}
+          </select>
+
+          {% if sold_out %}
+          <button type="submit" name="add" class="las4">pre order</button>
+          {% else %}
+          <button type="submit" name="add" class="las4" id="AddToCart">Add To Cart</button>
+          {% endif %}
+
+        </form>
+
+        {% else %}
+
+        {% if sold_out %}
+        <button type="submit" name="add" class="las4">pre order</button>
+        {% else %}
+        <button {% if func == "" %}href="javascript:void(0);" onclick="quiqview('{{ product.handle | handleize }}')"{% else %}href="javascript:void(0);" onclick="{{ func }}; return false;"{% endif %} type="submit" name="add" class="las4" id="AddToCart">Add To Cart</button>
+        {% endif %}
+
+        {% endif %}
+
+        <a class="las3 las7"  href="#"><i class="fa fa-retweet"></i></a>
+      </div>
+
+      {% if product.description contains '[cowntdownt]' %}
+      <div class="grid-product-coundown"> 
+        {% assign countdownt_first = product.description | split: '[/cowntdownt]' | first %}
+        {% assign countdownt_final = countdownt_first | split: '[cowntdownt]' | last %}
+        
+        <div data-countdown="{{ countdownt_final }}"></div>
+      </div>
+      {% endif %}
+
+      
+      {% if product.description contains '[default_text]' %}
+      
+      {% assign default_text_first = product.description | split: '[/default_text]' | first %}
+      {% assign default_text_final = default_text_first | split: '[default_text]' | last %}
+      
+      <span>{{ default_text_final }}</span>
+      
+      {% endif %}
+      
+    </div>
+  </div>
+</div>
+
+
+

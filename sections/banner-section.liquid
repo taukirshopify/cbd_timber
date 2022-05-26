@@ -1,0 +1,93 @@
+<section class="design-area hm-three">
+  <div class="container">
+    <div class="row">
+      <div class="bottom-design res">
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="tb-info-box">
+            <div class="tb-image">
+              <img alt="" src="{{ section.settings.banner_1 | img_url: 'master' }}">
+            </div>
+            <div class="tb-content">
+              <h5>{{ section.settings.b1_title1 }}</h5>
+              <h3>{{ section.settings.b1_title2 }}</h3>
+              <h6><a href="#">{{ section.settings.b1_title3 }}</a></h6>
+            </div>
+          </div>
+          <div class="tb-info-box bt-no">
+            <div class="tb-content">
+              <h5>{{ section.settings.b2_title1 }}</h5>
+              <h3>{{ section.settings.b2_title2 }}</h3>
+              <h6><a href="#">{{ section.settings.b2_title3 }}</a></h6>
+            </div>
+            <div class="tb-image tb-right">
+              <img alt="" src="{{ section.settings.banner_2 | img_url: 'master' }}">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="ro-info-box-wrap tpl3">
+            <div class="tb-image">
+              <img alt="" src="{{ section.settings.banner_3 | img_url: 'master' }}">
+            </div>
+            <div class="tb-content">
+              <div class="tb-content-inner">
+                <h5>{{ section.settings.b3_title1 }}</h5>
+                <h3>{{ section.settings.b3_title2 }}</h3>
+                <h6>
+                  <a href="#">{{ section.settings.b3_title3 }}</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		{
+			"type": "image_picker",
+			"id": "banner_1",
+			"label": "Choose image"
+		},
+		{
+			"type": "text",
+			"id": "b1_title1",
+			"label": "Titel 1"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,82 @@
+
+  {
+    "sections": {
+      "home_bannar":{
+        "type": "home_bannar",
+        "settings": {
+          
+        }
+        
+      },
+    "Home_text_running":{
+      "type": "Home_text_running",
+      "settings": {
+        
+      }
+      
+    },
+    "home_our_review":{
+      "type": "home_our_review",
+      "settings": {
+        
+      }
+      
+    },
+    "home_prodcuts":{
+      "type": "home_prodcuts",
+      "settings": {
+        
+      }
+      
+    },
+    "home_difference":{
+      "type": "home_difference",
+      "settings": {
+        
+      }
+      
+    },
+    "benefit":{
+      "type": "home_benefit",
+      "settings": {
+        
+      }
+      
+    },
+    "home_advace":{
+      "type": "home_advace",
+      "settings": {
+        
+      }
+      
+    },
+    "home-newsletter":{
+      "type": "home-newsletter",
+      "settings": {
+        
+      }
+      
+    },
+    "instafeed":{
+      "type": "home-instafeed",
+      "settings": {
+        
+      }
+      
+    }
+   
+  },
+  "order": [
+
+    "home_bannar",
+    "home_our_review",
+    "Home_text_running",
+    "home_prodcuts",
+    "home_difference",
+    "benefit",
+    "home_advace",
+    "home-newsletter",
+    "instafeed"
+
+  ]
+}

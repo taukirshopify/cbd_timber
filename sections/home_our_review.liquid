@@ -1,0 +1,86 @@
+<div class="our_review_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 ">
+                <div class="our_review text-center  text-md-start">
+                    <h3>{{ section.settings.title }}</h3>
+                    <p>{{ section.settings.review }}</p>
+                    <a href="{{ section.settings.url }}">{{ section.settings.btn }}</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 ">
+                <div class="oue-review-right ">
+ {% for c in section.blocks %}
+     
+                  <div class="singel-review-active text-center">
+                    <h3>"{{ c.settings.title }}"</h3>
+                    <div class="sinfel-review-image">
+                        <img src="{{ c.settings.img  | image_url: width: 800}}" class="lazy" alt="">
+                    </div>
+                  </div>
+
+           
+ {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "Our Review",
+        "class": "our_review",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Section Tilte",
+                "default": "Over 2,500 Reviews",
+                "placeholder": "Over 2,500 Reviews"
+            },
+            {
+                "type": "text",
+                "id": "review",
+                "label": "Add you review Count",
+                "default": "★★★★★ 4.9/5.0",
+            
+                "placeholder": "★★★★★ 4.9/5.0"
+            },
+            {
+                "type": "text",
+                "id": "btn",
+                "label": "Button Name",
+                "default": "See All ➞",
+               
+                "placeholder": "See All ➞"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Click here to make a link"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "review",
+                "name": "review",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "Select your Text",
+                        "default": "Pores appear less congested and skin is calmed from redness or inflammation",
+                        "placeholder": "Pores appear less congested and skin is calmed from redness or inflammation"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "img",
+                        "label": "Pic your Image"
+                    }
+                ]
+            }
+        ]
+        
+    }
+{% endschema %}

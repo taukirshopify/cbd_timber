@@ -1,0 +1,67 @@
+{% if settings.ajax_cart_method == "drawer" %}
+    <div class="top-cart-wrapper wrap floatleft">
+      <div class="top-shop-contain">
+        <div class="block-shop">
+          <div class="top-shop-title">
+            <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
+              <i class="fa fa-shopping-cart"></i>
+              <span class="count co1" id="CartCount">{{ cart.item_count }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    
+    
+    {% assign cursorStyle = '' %}{% if cart.item_count == 0 %}{% assign cursorStyle = ' style="display:none;"' %}{% endif %}
+    
+    <div class="top-cart-wrapper wrap floatleft">
+      <div class="top-shop-contain">
+        <div class="block-shop">
+          <div class="top-shop-title">
+            <a href="#">
+              <i class="fa fa-shopping-cart"></i>
+              <span class="count co1 bigcounter">{{ cart.item_count }}</span>
+            </a>
+          </div>
+          <div {{ cursorStyle }} class="wish-cart margin cart-group-1">
+            <div class="wish-item">
+              <ul>
+                {% for item in cart.items %}
+                <li>
+                  <div class="cat">
+                    <a class="image" href="{{ cart.item_url }}"><img src="{{ item | img_url:'small' }}" alt=""></a>
+                    <div class="cat_two">
+                      <p>
+                        <a href="{{ cart.item_url }}">{{ item.title }}</a>
+                      </p>
+                      <p><span class="agn">{{ item.quantity }} </span>x <span>{{ item.price | money }}</span></p>
+                    </div>
+                    <div class="cat_icon">
+                      <a class="remove" href="javascript:void(0);" onclick="Shopify.removeItem({{ item.variant.id }})">×</a>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="wish-item">
+              <div class="cat_bottom">
+                <p class="total">
+                  <strong>{{ 'cart.general.subtotal' | t }}:</strong>
+                  <span class="amount shopping-cart__total">{{ cart.total_price | money }}</span>
+                </p>
+                <p class="buttons">
+                  <a class="button wc-forward" href="/cart">{{ 'cart.general.view_cart' | t }}</a>
+                  <a class="button checkout wc-forward" href="/checkout">{{ 'cart.general.checkout' | t }}</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    {% endif %}

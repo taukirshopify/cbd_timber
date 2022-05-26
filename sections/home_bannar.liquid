@@ -1,0 +1,235 @@
+
+ <div class="bannar-wrapper b-backgroud-picture d-flex align-items-lg-center justify-content-sm-center lazy">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-12 text-center text-lg-start ">
+                <h4>{{ section.settings.title }}</h4>
+                <h1> {{section.settings.home_bannar_text_top}}  
+
+                <span id="name">    {{section.settings.home_bannar_text_top_moving}}  </span>
+          
+                 {{section.settings.home_bannar_text_last}}  
+                </h1>
+                <div class="bannar-offer">
+                    <ul>
+                        <li><span><i class="fas fa-check"></i></span>Australian Owned</li>
+                        <li><span><i class="fas fa-check"></i></span>Australian Owned</li>
+                        <li><span><i class="fas fa-check"></i></span>Australian Owned</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn bannar_btn">SHOP AUSTRALIAN HEMP PRODUCTS</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Home Bannar",
+        "class": "index_bannar",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Bannar Top Text",
+            "default": "IN JUST 10 MINUTES",
+         
+            "placeholder": "IN JUST 10 MINUTES"
+          },
+            {
+                "type": "image_picker",
+                "id": "home_bannar",
+                "label": "Select your bannar Image for Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "home_bannar02",
+                "label": "Select your bannar Image for Mobile"
+            },
+            {
+                "type": "text",
+                "id": "home_bannar_text_top",
+                "label": "Select Your bannar Title",
+                "default": "Goodbye",
+          
+                "placeholder": " Goodbye"
+            },
+            {
+                "type": "text",
+                "id": "home_bannar_text_top_moving",
+                "label": "Select Your bannar Title",
+                "default": "Oily skin",
+          
+                "placeholder": "Oily skin"
+            },
+            {
+                "type": "text",
+                "id": "home_bannar_text_last",
+                "label": "Select Your bannar Title",
+                "default": "<br>and hello <b>  clearer skin.</b>",
+          
+                "placeholder": "<br>and hello <b>  clearer skin.</b>"
+            },
+            {
+                "type": "url",
+                "id": "home_bannar_url",
+                "label": "Bannar link"
+            },
+            {
+                "type": "text",
+                "id": "home_button_text",
+                "label": "Button text",
+                "default": "SHOP AUSTRALIAN HEMP PRODUCTS",
+                
+                "placeholder": "SHOP"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "slide",
+                "name": "bannar Moving",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "bannar_moving_text",
+                        "label": "Add Moving text",
+                        "default": "Oily skin",
+                   
+                        "placeholder": "Oily skin"
+                    },
+                    {
+                        "type": "text",
+                        "id": "bannar_list_text",
+                        "label": "Our servie",
+                        "default": "Australian Owned",
+                   
+                        "placeholder": "Australian Owned"
+                    }
+                    
+                ]
+            }
+        ]
+    }
+{% endschema %}
+
+<style>
+    
+.b-backgroud-picture {
+    background-image: url('{{ section.settings.home_bannar02 | img_url: '' }}');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  @media (min-width: 992px) {
+    .b-backgroud-picture {
+      background-image: url('{{ section.settings.home_bannar | img_url: '' }}');
+    }
+  }
+  
+  .b-backgroud-picture {
+    height: 730px;
+  }
+  @media (min-width: 340px) and (max-width: 700px) {
+    .b-backgroud-picture {
+      height: 930px;
+    }
+  }
+  @media (min-width: 576px) {
+    .b-backgroud-picture {
+      height: 930px;
+    }
+  }
+  @media (min-width: 992px) {
+    .b-backgroud-picture {
+      height: 730px;
+    }
+  }
+  
+.bannar-wrapper {
+    padding: 0 0 0 40px;
+  }
+  @media (min-width: 340px) and (max-width: 700px) {
+    .bannar-wrapper {
+      padding: 0;
+      padding-top: 30px;
+    }
+  }
+  @media (min-width: 576px) {
+    .bannar-wrapper {
+      padding: 0;
+      padding-top: 30px;
+    }
+  }
+  @media (min-width: 992px) {
+    .bannar-wrapper {
+      padding: 20px;
+      padding-top: 30px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .bannar-wrapper {
+      padding: 0 0 0 40px;
+    }
+  }
+  .bannar-wrapper h4 {
+    margin-bottom: 20px;
+    font-size: 17px;
+  }
+  .bannar-wrapper h1 {
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+    line-height: 1.5;
+    font-size: 50px;
+  }
+  @media (min-width: 340px) and (max-width: 700px) {
+    .bannar-wrapper h1 {
+      padding: 2px 0;
+      margin-bottom: 10px;
+      line-height: 1.2;
+      font-size: 34px;
+      padding-top: 30px;
+    }
+  }
+  @media (min-width: 992px) {
+    .bannar-wrapper h1 {
+      padding: 10px 0;
+      padding-top: 30px;
+    }
+  }
+  .bannar-wrapper h1 span {
+    font-weight: 900;
+    color: #6fa77f;
+  }
+  .bannar-wrapper a.bannar_btn {
+    margin: 20px 0;
+    font-weight: 600;
+  }
+  
+  .bannar-offer ul li {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .bannar-offer ul li span {
+    margin-right: 5px;
+  }
+  .bannar-offer ul li span i {
+    color: #6fa77f;
+    font-size: 16px;
+  }
+</style>
+
+
+<script>
+
+  var names = [  {% for block in section.blocks  %}  {% if block.last %}
+    '{{ block.settings.bannar_moving_text }}'
+  {% endif %}  '{{ block.settings.bannar_moving_text }}', {% endfor %}];
+  console.log(names)
+  setInterval(function() {
+    var rand = Math.floor(Math.random() * names.length);
+    document.getElementById("name").innerHTML = names[rand];
+  }, 2000);
+
+</script>

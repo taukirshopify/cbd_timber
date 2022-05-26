@@ -1,0 +1,127 @@
+<section class="design-area hm-three">
+    <div class="container">
+
+        <div class="row">
+            {% include 'mini-cart' %}</div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="lastest-from">
+            <h3>{{ section.settings.collection_title }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="features-curosel5 features-curosel2 indicator-style2 home-2">
+  
+          
+          {% assign collection = collections[section.settings.collection] %}
+          
+          <!-- single-product start -->
+          
+          {% for product in collection.products limit: section.settings.p_limit %}
+          <div class="col-md-3">
+            
+            {% include 'product-grid-item' %}
+            
+          </div>
+          
+          {% endfor %}
+          
+          
+          
+          
+          <!-- single-product end -->			
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  
+  {% schema %}
+    {
+      "name": "Feature Products",
+      "settings": [
+              {
+                  "type": "text",
+                  "id": "collection_title",
+                  "label": "Collection Title"
+              },
+              {
+                  "type": "collection",
+                  "id": "collection",
+                  "label": "select your collection"
+              },
+              {
+                  "type": "select",
+                  "id": "p_limit",
+                  "label": "Collection Limit",
+                  "options": [
+                      {
+                          "value": "3",
+                          "label": "3 producs"
+                      },
+                      {
+                          "value": "4",
+                          "label": "4 producs"
+                      },
+                      {
+                          "value": "5",
+                          "label": "5 producs"
+                      }
+                  ],
+                  "default": "3"
+              },
+              {
+                  "type": "select",
+                  "id": "col_item",
+                  "label": "Product coloum",
+                  "options": [
+                      {
+                          "value": "3",
+                          "label": "3 col"
+                      },
+                      {
+                          "value": "4",
+                          "label": "4 col"
+                      },
+                      {
+                          "value": "5",
+                          "label": "5 col"
+                      }
+                  ],
+                  "default": "3"
+              }
+          ],
+          "presets":[
+              {
+                  "name": "Feature Products",
+                  "category": "collection"
+              }
+          ]
+    }
+  {% endschema %}
+  
+  
+  <script>
+    
+    
+      
+    
+  </script>
+  
+  
+  
+  
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  
+  
+  
+  
+  {% endjavascript %}
+  

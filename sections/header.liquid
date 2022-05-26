@@ -1,0 +1,155 @@
+<header class="header-area {% unless template == 'index' %}contact{% endunless %}">
+  <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="top-text">
+            <div class="textwidget">{{ settings.welcome_shop }} {{ customer.name }}</div>
+            
+            {% include 'currency-picker' %}
+            
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="widget">
+            <ul>
+
+              {% assign header_top_menu_handle = settings.header_top_menu %}
+              {% for link in linklists[header_top_menu_handle].links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+              {% endfor %}
+
+
+              {% if section.settings.static_menu_enable %}
+
+              {% if shop.customer_accounts_enabled and customer %}
+              <li>
+                <a href="/wishlist">Wishlist</a>
+              </li>
+              {% else %}
+              <li>
+                <a href="/account/login">Wishlist</a>
+              </li>
+              {% endif %}
+              <li>
+                <a href="/checkout">Check Out</a>
+              </li>
+
+              {% if shop.customer_accounts_enabled and customer %}
+              <li>
+                <a class="tb-login" href="/account/logout">Logout</a>
+              </li>
+              {% else %}
+              <li>
+                <a class="tb-login" href="/account/login">Login</a>
+              </li>
+              {% endif %}
+
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-menu {% if template == 'index' %}home-3{% endif %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="header-wrapper">
+            <div class="logo floatleft">
+              {% if section.settings.logo-2 %}
+              <a href="/">
+                <img src="{{ section.settings.logo-2 | img_url: 'small' }}" alt="{{ shop.name }}">
+              </a>
+              {% else %}
+              <a href="/">
+                {{ shop.name }}
+              </a>
+              {% endif %}
+            </div>
+            <div class="menu-cart floatright">
+              <div class="muti_menu floatleft">
+                {% include 'main-menu' %}
+              </div>
+              <div class="tb-menu-sidebar floatleft">
+                <div class="search-item">
+                  <a class="icon_search" href="#">
+                    <i class="fa fa-search search-icon"></i>
+                  </a>
+                  <div class="widget_searchform_content">
+                    {% include 'search-bar' %}
+                  </div>
+                </div>
+              </div>
+
+
+
+            
+
+
+
+
+
+
+            </div>
+            
+            {% include 'mobile-menu' %}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+		  {
+            "type": "text",
+            "id": "welcome_shop",
+            "label": "Welcome Message!"
+          },
+          {
+            "type": "image_picker",
+            "id": "logo-2",
+            "label": "Your logo"
+          },
+          {
+            "type": "link_list",
+            "id": "header_top_menu",
+            "label": "Select header top menu"
+          },
+          {
+            "type": "checkbox",
+            "id": "static_menu_enable",
+            "label": "Show\/hide",
+            "default": true
+          }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

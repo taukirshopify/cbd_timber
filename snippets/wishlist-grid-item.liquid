@@ -1,0 +1,42 @@
+{% assign variant = product.selected_or_first_available_variant %}
+
+{% if product.available %}
+{% assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" %}
+{% endif %} 
+
+<div class="product-item product-tile-container wishlist-tile-container" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+  <div class="product-tile wishlist-tile">
+    <div class="product-img product-tile--tile-media">
+      <a class="tile-media--media-link" href="{{ product.url }}">
+        <div class="media-link--image">
+          <img class="image--main image" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title }}">
+        </div>
+      </a>
+		{% include 'wishlist-button'%}
+      <div class="action-btn fix">
+        <a href="javascript:void(0);" onclick="quiqview('{{ product.handle | handleize }}')" data-toggle="modal" title="Quick View"><i class="pe-7s-look"></i>Quick view</a>
+        {% if product.available %}
+        <a class="action--quick-cart tile-actions--btn flex cart-btn" href="javascript:void(0);" onclick="{{ func }}; return false;"><i class="pe-7s-cart"></i>{{ 'products.product.add_to_cart' | t }}</a>
+        {% else %}
+        <a class="action--quick-cart tile-actions--btn flex cart-btn disabled-add-to-cart" href="javascript:void(0);" onclick="{{ func }}; return false;"><i class="pe-7s-cart"></i>{{ 'products.product.add_to_cart' | t }}</a>
+        {% endif %}
+      </div>
+
+    </div>
+    <div class="product-tile--tile-content flex product-info text-left">
+      <div class="tile-content--text">
+        <h5 class="text--title black product-title title"><a href="{{ product.url }}">{{ product.title }}</a></h5>
+        <div class="price-ratting fix">
+          <span class="price float-left">
+            <span class="text--price pro-price new">{{ product.price | money }}</span>
+            {% if product.compare_at_price > product.price %}
+            <span class="text--price pro-price">
+              <span class="price--compare old">{{ product.compare_at_price | money }}</span> 
+            </span>
+            {% endif %}  
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

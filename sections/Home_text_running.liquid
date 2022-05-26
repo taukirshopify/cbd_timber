@@ -1,0 +1,38 @@
+<div class="running_text-slider">
+    <div class="marquee">
+        <div class="marquee__inner">
+            {% for b in sections.blocks %}
+                <p class="marquee__line">{{ b.text }}</p>
+            {% endfor %}
+       
+        </div>
+    </div>
+</div>
+
+
+
+{% schema %}
+    {
+        "name": "Running Text",
+        "class": "running",
+        "settings": [
+
+        ],
+        "blocks": [
+            {
+                "type": "Running_text",
+                "name": "running",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "select your text",
+                        "default": "Design is not just what it looks like and feels like. Design is how it works.",
+                        "placeholder": "Design is not just what it looks like and feels like. Design is how it works."
+                    }
+                ]
+            }
+        ]
+        
+    }
+{% endschema %}

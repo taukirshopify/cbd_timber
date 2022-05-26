@@ -1,0 +1,140 @@
+<div class="difference-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2>{{ section.settings.section_t }}</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="responsive">
+                    {% for block in section.blocks %}
+                        
+                   
+                <div class="singel-bud-differences">
+                    <div class="singel-but-heading text-center" >
+                        <h4>{{ block.settings.blog_t }}</h4>
+                    </div>
+                    <div class="singel-bud-image">
+                        <img src="{{ block.settings.bloga | image_url: width: 800  }}" alt="">
+                       
+                            <div class="singel-but-img-status bud-left-status">after</div>
+                            <div class="singel-but-img-status bud-right-status">before</div>
+                    </div>
+                    <div class="signel-bd-content">
+                        <h3>{{ block.settings.User}}</h3>
+                  
+                        <h6>{{ block.settings.uidt}}<span> {{ block.settings.uid}}  </span> </h6>
+                        <h6>{{ block.settings.uidt1}}<span> {{ block.settings.uid1}}  </span> </h6>
+                       
+                       
+                        <p>"{{ block.settings.par}}"</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            </div>
+            <div class="col-12 text-center">
+                <div class="prodcut-shop-all">
+                    <a href="{{ section.settings.shop_url }}" class="btn">{{ section.settings.shop }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Difference Section",
+        "class": "Difference",
+        "settings": [
+            {
+                "type": "text",
+                "id": "section_t",
+                "label": "Put your section title",
+                "default": "Reduces <span>random breakouts </span>",
+            
+                "placeholder": "Reduces <span>random breakouts </span>"
+            },
+            {
+                "type": "text",
+                "id": "shop",
+                "label": "Shop button",
+                "default": "Shop all",
+            
+                "placeholder": "Shop all"
+            },
+            {
+                "type": "url",
+                "id": "shop_url",
+                "label": "Shop all link"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "Singel_blog",
+                "name": "Blog",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "blog_t",
+                        "label": "Put the label of you blog",
+                        "default": "Reduces <span>random breakouts </span>",
+                   
+                        "placeholder": "Reduces <span>random breakouts </span>"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "bloga",
+                        "label": "Select your blog Image"
+                    },{
+                        "type": "text",
+                        "id": "text",
+                        "label": "User",
+                        "default": "Helena",
+                        "placeholder": "Helena"
+                    },{
+                        "type": "text",
+                        "id": "uidt",
+                        "label": "user categori",
+                        "default": "IG",
+                        
+                        "placeholder": "IG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "uid",
+                        "label": "user id",
+                        "default": "@misschloelee.90",
+                        "placeholder": "@misschloelee.90"
+                    },
+                    {
+                        "type": "text",
+                        "id": "uidt1",
+                        "label": "user categori",
+                        "default": "IG",
+                        
+                        "placeholder": "IG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "uid1",
+                        "label": "user id",
+                        "default": "@misschloelee.90",
+                        "placeholder": "@misschloelee.90"
+                    },
+                    {
+                        "type": "text",
+                        "id": "par",
+                        "label": "Summer",
+                        "default": "The first one was just before I tried it for the first time and the other one I just took now. I love how amazing my skin is becoming!",
+        
+                        "placeholder": "Put you summery here"
+                    }
+                   
+                ]
+            }
+        ]
+        
+    }
+{% endschema %}

@@ -1,0 +1,136 @@
+<div class="shopping-cart-area s-cart-area">
+  <div class="container">
+
+    {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" novalidate enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <div class="s-cart-all">
+            <div class="page-title">
+              <h1>Shopping-Cart on Noraure </h1>
+            </div>
+            <div class="cart-form table-responsive">
+              <table id="shopping-cart-table" class="data-table cart-table">
+                <tr>
+                  <th class="low1">Product</th>
+                  <th class="low7">Quantity</th>
+                  <th class="low7">Price</th>
+                  <th class="low7">Total</th>
+                </tr>
+
+                {% for item in cart.items %}
+                <tr>
+                  <td class="sop-cart an-shop-cart">
+
+                    <a href="{{ item.url }}"><img class="primary-image" alt="" src="{{ item | img_url: 'compact' }}"></a>
+
+                    <a href="#">{{ item.title }}</a>
+                  </td>
+                  <td class="sop-cart an-sh">
+                    <div class="quantity ray">
+                      <input class="input-text qty text" type="number" title="Qty" name="updates[]" value="{{ item.quantity }}" step="1">
+                    </div>
+                    <a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                      <span>x</span>
+                    </a>
+                  </td>
+                  <td class="sop-cart">
+                    <div class="tb-product-price font-noraure-3">
+                      <span class="amount">{{ item.price | money }}</span>
+                    </div>
+                  </td>
+                  <td class="cen">
+                    <span class="amount">{{ item.line_price | money }}</span>
+                  </td>
+                </tr>
+                {% endfor %}
+
+
+              </table>
+            </div>
+            <div class="last-check1">
+              <div class="yith-wcwl-share yit">
+                <p class="checkout-coupon an-cop">
+                  <input type="submit" value="Update Cart" name="update">
+                  
+                  <a href="/cart/clear">Clear Cart</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      <div class="row">
+        <div class="second-all-class">
+          <div class="col-md-7 col-sm-12 col-xs-12">
+            <h2>Cart Note</h2>
+            <textarea name="note" class="coll-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+            
+            {% include 'cart-shipping-calculator' %}
+            
+          </div>
+          <div class="col-md-5 col-sm-12 col-xs-12">
+            <div class="sub-total">
+              <table>
+                <tbody>
+                  <tr class="cart-subtotal">
+                    <th>Subtotal:</th>
+                    <td>
+                      <span class="amount">{{ cart.total_price | money }}</span>
+                    </td>
+                  </tr>
+                  <tr class="order-total">
+                    <th>Total:</th>
+                    <td>
+                      <strong>
+                        <span class="amount">{{ cart.total_price | money }}</span>
+                      </strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="wc-proceed-to-checkout">
+              <p class="return-to-shop">
+                <a class="button wc-backward" href="/collections/all">Continue Shopping</a>
+              </p>
+              <a class="wc-forward" href="/checkout">Confirm Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+	{% else %}
+    
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <div class="s-cart-all">
+            <div class="page-title">
+              <h1>Your Cart is empty!</h1>
+              <a href="/collections/all">Continue Shopping</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Cart Page",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
