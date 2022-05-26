@@ -123,7 +123,7 @@ Shopify.cartUpdateInfo = function(cart, cart_cell_id) {
               if(i > 19){
                   return false;
               }
-              jQuery('<li><div class="cat"><a class="image" href="' + item.url + '"><img src="' + item.image + '" alt=""></a><div class="cat_two"><p><a href="' + item.url + '">' + item.title + '</a></p><p><span class="agn">' + item.quantity + ' </span>x <span>' + Shopify.formatMoney(item.price, formatMoney) + '</span></p></div><div class="cat_icon"><a class="remove" href="javascript:void(0);" onclick="Shopify.removeItem(' + item.variant_id + ')" class="icon icon-delete"><span>'+jQuery(".cart_messages .delete").text()+'</span>x</a></div></div></li>').appendTo(table);
+              jQuery('<li class="d-flex"><div class="cart-image"><a href="' + item.url + '"><img src="' + item.image + '" alt=""></a></div><div class="cart-details"><div class="cart-with-close d-flex"><h6>' + item.title + '</h6><div class="cart-close-icon"><a class="remove" href="javascript:void(0);" onclick="Shopify.removeItem(' + item.variant_id + ')"><svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="18px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/></svg></a></div></div><div class="cart-count d-flex"><div class="cart-count">' + item.quantity + '</div><span><svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="12px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/></svg></span><div class="cart-count-quentity">' + Shopify.formatMoney(item.price, formatMoney) + '</div></div></div></li>').appendTo(table);
             });
           }
           else {
@@ -145,3 +145,10 @@ function changeHtmlValue (cell, value) {
   var $cartLinkText = jQuery(cell);
   $cartLinkText.html(value);
 };
+
+
+
+
+
+
+

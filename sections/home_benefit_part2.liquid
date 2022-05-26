@@ -1,29 +1,31 @@
 <div class="bennifites-wrapper overflow-hidden">
     <div class="container-fuild">
         <div class="row ">
-            <div class="col-md-7">
-                <div class="bennifites-imag">
-                    <img src="{{section.settings.img | image_url: '' }}"  alt="">
-                </div>
-            </div>
             <div class="col-md-5 d-flex align-items-center ">
                 <div class="bennifites-content ">
+                        <span>{{ section.settings.top }}</span>
                         <h2>
-                           {{section.settings.title}}
+                           {{ section.settings.title1}}
                         </h2>
-                        <p>{{ section.settings.p }} </p>
+                        <p>{{  section.settings.p1 }}</p>
                         <div class="bannar-offer">
                             <ul>
                                 {% for c in section.blocks %}
-                                   
-                                        <li><span><i class="fas fa-check"></i></span>{{ c.settings.texta }}</li>
+                                        <li><span><i class="fas fa-check"></i></span>{{ c.settings.pp }}</li>
                                    
                                 {% endfor %}
+                              
+                                
+                             
                             </ul>
                         </div>
                 </div>
             </div>
-           
+            <div class="col-md-7">
+                <div class="bennifites-imag">
+                    <img src="{{ section.settings.img01 | image_url: ''}}" class="lazy" alt="">
+                </div>
+            </div>
          
         </div>
     </div>
@@ -32,24 +34,33 @@
 
 {% schema %}
     {
-        "name": "BeneFits Part One",
+        "name": "BeneFits",
         "class": "benfit",
         "settings": [
             {
                 "type": "image_picker",
-                "id": "img",
-                "label": "Select Your Left image"
+                "id": "img01",
+                "label": "Select Yor Right Image"
             },
             {
                 "type": "text",
-                "id": "title",
+                "id": "top",
+                "label": "Select Top Text",
+                "default": "YOUR SKIN'S NEW LOVE",
+            
+                "placeholder": "YOUR SKIN'S NEW LOVE"
+            },
+            {
+                "type": "text",
+                "id": "title1",
                 "label": "Put you section Title",
                 "default": " WHY HEMP?",
+                
                 "placeholder": " WHY HEMP?"
             },
             {
                 "type": "text",
-                "id": "p",
+                "id": "p1",
                 "label": "Select you summery ",
                 "default": "Hey Bud harnesses the power of hemp seed oil, full of omega-6 and omega-3 fatty acids in perfect ratio, like no other skincare ingredient that helps <b>clear acne, blackheads and blemishes.</b>  ",
               
@@ -58,12 +69,12 @@
         ],
             "blocks": [
                 {
-                    "type": "list_right",
-                    "name": "list_picker",
+                    "type": "list_left",
+                    "name": "list_picker2",
                     "settings": [
                         {
                             "type": "text",
-                            "id": "texta",
+                            "id": "pp",
                             "label": "Name your Text",
                             "default": "Australian Owned",
                             "placeholder": "Australian Owned"

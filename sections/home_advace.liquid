@@ -2,58 +2,20 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-               <h2>HEY BUD'S ADVANTAGE</h2>
+               <h2>{{ section.settings.title }}</h2>
             </div>
             <div class="col-md-12">
                 <div class="acarousel">
+                    {% for c in section.blocks %}
                     <div class="advice-brand text-center">
                         <div class="advice-brand-img">
-                            <img src="./assets/images/advance01.png" alt="">
+                           <img src=" {{ c.settings.img  | img_url: '100x'  }}" alt="">
                         </div>
                     
-                        <h3>No Nasties</h3>
-                        <p>100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG</p>
+                        <h3>{{ c.settings.text }}</h3>
+                        <p>{{ c.settings.text1 }}</p>
                     </div>
-                    <div class="advice-brand text-center">
-                        <div class="advice-brand-img">
-                            <img src="./assets/images/advance02.png" alt="">
-                        </div>
-                    
-                        <h3>No Nasties</h3>
-                        <p>100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG</p>
-                    </div>
-                    <div class="advice-brand text-center">
-                        <div class="advice-brand-img">
-                            <img src="./assets/images/advance03.png" alt="">
-                        </div>
-                    
-                        <h3>No Nasties</h3>
-                        <p>100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG</p>
-                    </div>
-                    <div class="advice-brand text-center">
-                        <div class="advice-brand-img">
-                            <img src="./assets/images/advance01.png" alt="">
-                        </div>
-                    
-                        <h3>No Nasties</h3>
-                        <p>100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG</p>
-                    </div>
-                    <div class="advice-brand text-center">
-                        <div class="advice-brand-img">
-                            <img src="./assets/images/advance01.png" alt="">
-                        </div>
-                    
-                        <h3>No Nasties</h3>
-                        <p>100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG</p>
-                    </div>
-                    <div class="advice-brand text-center">
-                        <div class="advice-brand-img">
-                            <img src="./assets/images/advance01.png" alt="">
-                        </div>
-                    
-                        <h3>No Nasties</h3>
-                        <p>100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG</p>
-                    </div>
+                {%  endfor %}
             
 
                 </div>
@@ -61,3 +23,50 @@
         </div>
     </div>
 </div>
+
+{% schema %}
+    {
+        "name": "Advance Area",
+        "class": "advance",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Please Select you section Title",
+                "default": "HEY BUD'S ADVANTAGE",
+            
+                "placeholder": "HEY BUD'S ADVANTAGE"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "Singel_Item",
+                "name": "item",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "img",
+                        "label": "Please select your brand"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "No Nasties",
+                        "default": "No Nasties",
+                    
+                        "placeholder": "No Nasties"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text1",
+                        "label": "Please select the text",
+                        "default": "100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG",
+                       
+                        "placeholder": "100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG"
+                    }
+                ]
+            }
+        ]
+        
+    }
+{% endschema %}

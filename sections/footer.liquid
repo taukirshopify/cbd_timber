@@ -1,196 +1,112 @@
-<footer class="footer-area">
-  <div class="footer-top">
+<footer class="footer">
+
     <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-          <div class="first-footer rspn">
-            <h3 class="wg-title">Contact Us</h3>
-            <div class="textwidget">
-              <ul>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-map-marker"></i>
-                    <span>NORAURE London Oxford Street 012 United Kingdom.</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-envelope"></i>
-                    <span>emailnoraure@gmail.com emailsupport@gmail.com</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-phone"></i>
-                    <span>
-                      (+92) 3456 7890
-                      <br>
-                      (+92) 1234 5678
-                    </span>
-                  </a>
-                </li>
-              </ul>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                      
+                        <img src="{section.settings.img | image_url: ''}" alt="">
+                    </div>
+                    <h6 class="footer-color"><span>{{ section.settings.text1 }}</span></h6>
+                    <h6>{{ section.settings.text2 }}</h6>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-          <div class="first-footer rspn">
-            <h3 class="wg-title">Information</h3>
-            <div class="textwidget">
-              
-              <ul class="f-none">
-                {% assign footer_menu_1 = section.settings.footer_menu_1_rasel %}
-                {% for link in linklists[footer_menu_1].links %}
-                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-              </ul>
-              
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-sub-menu">
+                    <ul>
+                        {% assign footer_menu_1 = section.settings.sub %}
+                        {% for link in linklists[footer_menu_1].links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                        
+                    </ul>
+                </div>
             </div>
-          </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-sub-menu">
+                    <ul>
+                        {% assign footer_menu_2 = section.settings.sub2 %}
+                        {% for link in linklists[footer_menu_2].links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="footer-sub-menu">
+                    <ul>
+                        {% assign footer_menu_3 = section.settings.sub3 %}
+                        {% for link in linklists[footer_menu_3].links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-2 col-md-3 col-xs-12">
-          
-          <div class="instagram">
-          <div id="instafeed"></div>
-          </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="copy-right">
+                    <p>{{ section.settings.location }}</p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-2 hidden-md hidden-sm col-xs-12">
-          
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-          
-          {% if section.settings.footer_option == 'newsletter' %}
-          {% include 'newsletter' %}
-          {% endif %}
-          
-          {% if section.settings.footer_option == 'twitterfeed' %}
-          <div class="first-footer rspn">
-            
-            <a data-height="300"  class="twitter-timeline" href="https://twitter.com/musa_kalimullah">Tweets by musa_kalimullah</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            
-            
-          </div>
-          {% endif %}
-          
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="footer-address">
-            <address>
-              Copyright ©
-              <a href="#">BootExperts.</a>
-              All Rights Reserved
-            </address>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="foot-icon">
-            <ul>
-              <li><a href="#"><img src="img/icon-img/payment-1.jpg" alt=""></a></li>
-              <li><a href="#"><img src="img/icon-img/payment-2.jpg" alt=""></a></li>
-              <li><a href="#"><img src="img/icon-img/payment-3.jpg" alt=""></a></li>
-              <li><a href="#"><img src="img/icon-img/payment-4.jpg" alt=""></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </footer>
 
 
-
-
-
-
-
-
-
-<script>
-(function ($) {
-  "use strict";
-
-  jQuery(document).ready(function(){
-
-    var userFeed = new Instafeed({
-      get: 'user',
-      userId: '{{ section.settings.instafeed_user_id }}',
-      limit: '12',
-      accessToken: '{{ section.settings.access_token }}'
-    });
-    userFeed.run();
-
-
-  });
-
-})(jQuery); 
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% schema %}
-  {
-    "name": "Footer",
-    "settings": [
-			{
-				"type": "textarea",
-				"id": "newsletter_action",
-				"label": "paste your mailchim action url"
-			},
-			{
-              "type": "link_list",
-              "id": "footer_menu_1_rasel",
-              "label": "Select footer menu 1"
-            },
-			{
-				"type": "select",
-				"id": "footer_option",
-				"label": "choose",
-				"options": [
-					{
-						"label": "Newsletter",
-						"value": "newsletter"
-					},
-					{
-						"label": "Twitterfeed",
-						"value": "twitterfeed"
-					}
-				],
-				"default": "twitterfeed"
-			},
-			{
-				"type": "text",
-				"id": "instafeed_user_id",
-				"label": "Instrafeed User Id",
-				"default": "3314048741"
-			},
-			{
-				"type": "text",
-				"id": "access_token",
-				"label": "Access Token",
-				"default": "3314048741.1677ed0.312841e77dd94fd694b05808d34204f1"
-			}
-		]
-  }
+    {
+        "name": "Footer Area",
+        "class": "footer",
+        "settings": [
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Select you footer logo"
+        },
+        {
+            "type": "text",
+            "id": "text1",
+            "label": "Brand Moto",
+            "default": "SIGN UP FOR EXCLUSIVE GIVEAWAYS, PROMOTIONS, AND GLOW TIPS.",
+        
+            "placeholder": "SIGN UP FOR EXCLUSIVE GIVEAWAYS, PROMOTIONS, AND GLOW TIPS."
+        },
+        {
+            "type": "text",
+            "id": "text2",
+            "label": "SAVE 10% OFF YOUR FIRST ORDER",
+            "default": "SAVE 10% OFF YOUR FIRST ORDER",
+          
+            "placeholder": "SAVE 10% OFF YOUR FIRST ORDER"
+        },{
+            "type": "text",
+            "id": "location",
+            "label": "Select your Location",
+            "default": "Hey Bud Skincare ABN 38 636 022 850",
+          
+            "placeholder": "Hey Bud Skincare ABN 38 636 022 850"
+        },
+        {
+            "type": "link_list",
+            "id": "sub",
+            "label": "Please select you footer Menu" 
+        },
+        {
+            "type": "link_list",
+            "id": "sub1",
+            "label": "Please select you footer Menu 2" 
+        },
+        {
+            "type": "link_list",
+            "id": "sub2",
+            "label": "Please select you footer Menu 3" 
+        }
+        ]
+      
+                   
+                
+        
+    }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}

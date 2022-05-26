@@ -1,108 +1,220 @@
-<header class="header-area {% unless template == 'index' %}contact{% endunless %}">
-  <div class="header-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="top-text">
-            <div class="textwidget">{{ settings.welcome_shop }} {{ customer.name }}</div>
-            
-            {% include 'currency-picker' %}
-            
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="widget">
-            <ul>
-
-              {% assign header_top_menu_handle = settings.header_top_menu %}
-              {% for link in linklists[header_top_menu_handle].links %}
-              <li>
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-              {% endfor %}
-
-
-              {% if section.settings.static_menu_enable %}
-
-              {% if shop.customer_accounts_enabled and customer %}
-              <li>
-                <a href="/wishlist">Wishlist</a>
-              </li>
-              {% else %}
-              <li>
-                <a href="/account/login">Wishlist</a>
-              </li>
-              {% endif %}
-              <li>
-                <a href="/checkout">Check Out</a>
-              </li>
-
-              {% if shop.customer_accounts_enabled and customer %}
-              <li>
-                <a class="tb-login" href="/account/logout">Logout</a>
-              </li>
-              {% else %}
-              <li>
-                <a class="tb-login" href="/account/login">Login</a>
-              </li>
-              {% endif %}
-
-              {% endif %}
-
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+<header>
+  <div class="header_top">
+     <div class="container">
+         <div class="row">
+             <div class="col-12 text-center">
+    
+              <p>{{ section.settings.welcome_shop }}</p>
+             </div>
+         </div>
+     </div>
   </div>
-  <div class="header-menu {% if template == 'index' %}home-3{% endif %}">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="header-wrapper">
-            <div class="logo floatleft">
-              {% if section.settings.logo-2 %}
-              <a href="/">
-                <img src="{{ section.settings.logo-2 | img_url: 'small' }}" alt="{{ shop.name }}">
-              </a>
-              {% else %}
-              <a href="/">
-                {{ shop.name }}
-              </a>
-              {% endif %}
-            </div>
-            <div class="menu-cart floatright">
-              <div class="muti_menu floatleft">
-                {% include 'main-menu' %}
-              </div>
-              <div class="tb-menu-sidebar floatleft">
-                <div class="search-item">
-                  <a class="icon_search" href="#">
-                    <i class="fa fa-search search-icon"></i>
-                  </a>
-                  <div class="widget_searchform_content">
-                    {% include 'search-bar' %}
+  <div class="main-header">
+      <div class="container-fluid">
+          <div class="row align-items-center">
+              <div class="col-lg-6 d-none d-lg-block">
+                  <div class="main-nevagation">
+                      <ul>
+                        {% for link in linklists.main-menu.links %}
+                          <li><a href="{{ link.url }}">{{link}}</a></li>
+
+                        {% endfor %}
+                        
+                      </ul>
                   </div>
-                </div>
+              </div>
+              <div class="col-lg-3 col-12 d-flex justify-content-center   justify-content-lg-start">
+                  <div class="logo ">
+                      <img src="{{ section.settings.logo-2 | img_url: 'large' }}" alt="">
+                  </div>
+              </div>
+              <div class="col-6 d-lg-none">
+                  <div class="mobile-menu-button">
+                      <button class="ma5menu__toggle" type="button">
+                          <span class="ma5menu__icon-toggle"></span><span class="ma5menu__sr-only">Menu</span>
+                      </button>
+                  </div>
               </div>
 
+              <div class="col-md-3 d-none d-lg-block">
+                  <div class="header-logging-wrapper d-flex justify-content-end">
+                      
+             
+                      <ul>
+                          <li><a   class="text-decoration cart-drawer-btn">BUD REWARDS</a></li>
+                          <li><a   class="cart-drawer-btn1 js-drawer-open-right"   href="/cart" aria-controls="CartDrawer" aria-expanded="false"  >
+                            <div class="shoping-cart-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20"  viewBox="0 0 256 256" xml:space="preserve">
+                           <desc>Created with Fabric.js 1.7.22</desc>
+                            <defs>
+                              </defs>
+                      <g transform="translate(128 128) scale(0.72 0.72)" style="">
+                          <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)">
+                          <path d="M 89.138 21.425 c -0.824 -1.103 -2.087 -1.736 -3.464 -1.736 H 17.129 l -0.886 -3.413 c -0.704 -2.713 -3.153 -4.607 -5.956 -4.607 H 1 c -0.552 0 -1 0.448 -1 1 c 0 0.552 0.448 1 1 1 h 9.287 c 1.892 0 3.545 1.279 4.021 3.11 l 11.165 42.995 c 0.114 0.441 0.512 0.749 0.968 0.749 h 52.201 c 0.553 0 1 -0.447 1 -1 s -0.447 -1 -1 -1 H 27.214 l -2.398 -9.232 h 53.3 c 2.704 0 5.128 -1.812 5.894 -4.404 l 5.809 -19.649 C 90.21 23.918 89.961 22.528 89.138 21.425 z M 87.901 24.671 l -5.809 19.649 c -0.518 1.75 -2.152 2.972 -3.977 2.972 H 24.297 l -6.649 -25.602 h 68.025 c 0.74 0 1.418 0.34 1.861 0.933 C 87.977 23.215 88.111 23.961 87.901 24.671 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 35.47 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.762 0 6.823 3.061 6.823 6.822 S 39.232 78.331 35.47 78.331 z M 35.47 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 s 4.823 -2.163 4.823 -4.822 C 40.293 68.849 38.129 66.686 35.47 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 68.27 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.763 0 6.823 3.061 6.823 6.822 S 72.032 78.331 68.27 78.331 z M 68.27 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 c 2.659 0 4.823 -2.163 4.823 -4.822 C 73.093 68.849 70.929 66.686 68.27 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                      </g>
+                      </g>
+                          </svg>
+                        
+                          <div class="shoping-cart-count">
+                            <h6 class="bigcounter" class="bigcounter">{{ cart.item_count }}</h6>
+                          </div>
+                            </div>
+                  </a>
+              </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-6  d-lg-none">
+                  <div class="header-logging-wrapper responsive-sidebar d-flex justify-content-end">
+                      <ul>
+                          <li><a  class="text-decoration cart-drawer-btn text-decoration">
+                              <div class="usericon">
+                                      
+                                  <svg width="18px"  viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                      <title>User icon</title>
+                                      <g id="UX-Week-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                          <g id="Home-1440---Greetings" transform="translate(-1244.000000, -74.000000)" stroke="currentColor" stroke-width="1.1">
+                                              <g id="header">
+                                                  <g id="nav" transform="translate(0.000000, 29.000000)">
+                                                      <g id="icon" transform="translate(1245.000000, 46.000000)">
+                                                          <path d="M8.80192941,3.03204706 C8.80192941,4.49181176 7.61816471,5.67557647 6.1584,5.67557647 C4.69863529,5.67557647 3.51487059,4.49181176 3.51487059,3.03204706 C3.51487059,1.57157647 4.69863529,0.387811765 6.1584,0.387811765 C7.61816471,0.387811765 8.80192941,1.57157647 8.80192941,3.03204706 Z" id="Stroke-1"></path>
+                                                          <path d="M0.475411765,11.7246353 C1.01964706,9.0684 3.342,7.19781176 6.15847059,7.19781176 C8.93047059,7.19781176 11.2507059,9.13192941 11.8415294,11.7253412 L0.475411765,11.7246353 Z" id="Stroke-3"></path>
+                                                      </g>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                      </g>
+                                  </svg>
+                              </div>
+                              </a>
+                          </li>
+                          <li><a   class="cart-drawer-btn1 js-drawer-open-right"   href="/cart" aria-controls="CartDrawer" aria-expanded="false"  >
+                            <div class="shoping-cart-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20"  viewBox="0 0 256 256" xml:space="preserve">
+                           <desc>Created with Fabric.js 1.7.22</desc>
+                            <defs>
+                              </defs>
+                       <g transform="translate(128 128) scale(0.72 0.72)" style="">
+                          <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)">
+                          <path d="M 89.138 21.425 c -0.824 -1.103 -2.087 -1.736 -3.464 -1.736 H 17.129 l -0.886 -3.413 c -0.704 -2.713 -3.153 -4.607 -5.956 -4.607 H 1 c -0.552 0 -1 0.448 -1 1 c 0 0.552 0.448 1 1 1 h 9.287 c 1.892 0 3.545 1.279 4.021 3.11 l 11.165 42.995 c 0.114 0.441 0.512 0.749 0.968 0.749 h 52.201 c 0.553 0 1 -0.447 1 -1 s -0.447 -1 -1 -1 H 27.214 l -2.398 -9.232 h 53.3 c 2.704 0 5.128 -1.812 5.894 -4.404 l 5.809 -19.649 C 90.21 23.918 89.961 22.528 89.138 21.425 z M 87.901 24.671 l -5.809 19.649 c -0.518 1.75 -2.152 2.972 -3.977 2.972 H 24.297 l -6.649 -25.602 h 68.025 c 0.74 0 1.418 0.34 1.861 0.933 C 87.977 23.215 88.111 23.961 87.901 24.671 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 35.47 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.762 0 6.823 3.061 6.823 6.822 S 39.232 78.331 35.47 78.331 z M 35.47 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 s 4.823 -2.163 4.823 -4.822 C 40.293 68.849 38.129 66.686 35.47 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 68.27 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.763 0 6.823 3.061 6.823 6.822 S 72.032 78.331 68.27 78.331 z M 68.27 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 c 2.659 0 4.823 -2.163 4.823 -4.822 C 73.093 68.849 70.929 66.686 68.27 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                       </g>
+                       </g>
+                          </svg>
+                          <div class="shoping-cart-count">
+                            <h6 class="bigcounter">{{ cart.item_count }}</h6>
+                          </div>
+                            </div>
+                         </a>
+                      </li>
+                      </ul>
+                  </div>
+              </div>
 
-
-            
-
-
-
-
-
-
-            </div>
-            
-            {% include 'mobile-menu' %}
-            
           </div>
-        </div>
       </div>
-    </div>
+  </div>
+  <div class="sticky-header ">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-9 d-none d-lg-block">
+                  <div class="main-nevagation">
+                      <ul>
+                        {% for link in linklists.main-menu.links %}
+                          <li><a href="{{ link.url }}">{{link}}</a></li>
+
+                        {% endfor %}
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-6 d-lg-none">
+                  <div class="mobile-menu-button">
+                      <button class="ma5menu__toggle" type="button">
+                          <span class="ma5menu__icon-toggle"></span><span class="ma5menu__sr-only">Menu</span>
+                      </button>
+                  </div>
+              </div>
+              <div class="col-6  d-lg-none">
+                  <div class="header-logging-wrapper responsive-sidebar d-flex justify-content-end">
+                      <ul>
+                          <li><a href="#" class="text-decoration">
+                              <div class="usericon">
+                                      
+                                  <svg width="18px"  viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                      <title>User icon</title>
+                                      <g id="UX-Week-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                          <g id="Home-1440---Greetings" transform="translate(-1244.000000, -74.000000)" stroke="currentColor" stroke-width="1.1">
+                                              <g id="header">
+                                                  <g id="nav" transform="translate(0.000000, 29.000000)">
+                                                      <g id="icon" transform="translate(1245.000000, 46.000000)">
+                                                          <path d="M8.80192941,3.03204706 C8.80192941,4.49181176 7.61816471,5.67557647 6.1584,5.67557647 C4.69863529,5.67557647 3.51487059,4.49181176 3.51487059,3.03204706 C3.51487059,1.57157647 4.69863529,0.387811765 6.1584,0.387811765 C7.61816471,0.387811765 8.80192941,1.57157647 8.80192941,3.03204706 Z" id="Stroke-1"></path>
+                                                          <path d="M0.475411765,11.7246353 C1.01964706,9.0684 3.342,7.19781176 6.15847059,7.19781176 C8.93047059,7.19781176 11.2507059,9.13192941 11.8415294,11.7253412 L0.475411765,11.7246353 Z" id="Stroke-3"></path>
+                                                      </g>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                      </g>
+                                  </svg>
+                              </div>
+                              </a>
+                          </li>
+                          <li><a   class="cart-drawer-btn1 js-drawer-open-right"   href="/cart" aria-controls="CartDrawer" aria-expanded="false"  >
+                            <div class="shoping-cart-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20"  viewBox="0 0 256 256" xml:space="preserve">
+                           <desc>Created with Fabric.js 1.7.22</desc>
+                            <defs>
+                              </defs>
+                         <g transform="translate(128 128) scale(0.72 0.72)" style="">
+                          <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)">
+                          <path d="M 89.138 21.425 c -0.824 -1.103 -2.087 -1.736 -3.464 -1.736 H 17.129 l -0.886 -3.413 c -0.704 -2.713 -3.153 -4.607 -5.956 -4.607 H 1 c -0.552 0 -1 0.448 -1 1 c 0 0.552 0.448 1 1 1 h 9.287 c 1.892 0 3.545 1.279 4.021 3.11 l 11.165 42.995 c 0.114 0.441 0.512 0.749 0.968 0.749 h 52.201 c 0.553 0 1 -0.447 1 -1 s -0.447 -1 -1 -1 H 27.214 l -2.398 -9.232 h 53.3 c 2.704 0 5.128 -1.812 5.894 -4.404 l 5.809 -19.649 C 90.21 23.918 89.961 22.528 89.138 21.425 z M 87.901 24.671 l -5.809 19.649 c -0.518 1.75 -2.152 2.972 -3.977 2.972 H 24.297 l -6.649 -25.602 h 68.025 c 0.74 0 1.418 0.34 1.861 0.933 C 87.977 23.215 88.111 23.961 87.901 24.671 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 35.47 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.762 0 6.823 3.061 6.823 6.822 S 39.232 78.331 35.47 78.331 z M 35.47 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 s 4.823 -2.163 4.823 -4.822 C 40.293 68.849 38.129 66.686 35.47 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 68.27 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.763 0 6.823 3.061 6.823 6.822 S 72.032 78.331 68.27 78.331 z M 68.27 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 c 2.659 0 4.823 -2.163 4.823 -4.822 C 73.093 68.849 70.929 66.686 68.27 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                           </g>
+                           </g>
+                          </svg>
+                          <div class="shoping-cart-count">
+                            <h6 class="bigcounter">{{ cart.item_count }}</h6>
+                          </div>
+                            </div>
+                          </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-md-3 d-none d-lg-block">
+                  <div class="header-logging-wrapper d-flex justify-content-end">
+                      
+             
+                      <ul>
+                          <li><a   class="text-decoration cart-drawer-btn">BUD REWARDS</a></li>
+                          <li><a  href="#" class="cart-drawer-btn1 js-drawer-open-right"   href="/cart" aria-controls="CartDrawer" aria-expanded="false"  >
+                            <div class="shoping-cart-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20"  viewBox="0 0 256 256" xml:space="preserve">
+                           <desc>Created with Fabric.js 1.7.22</desc>
+                            <defs>
+                              </defs>
+                      <g transform="translate(128 128) scale(0.72 0.72)" style="">
+                          <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)">
+                          <path d="M 89.138 21.425 c -0.824 -1.103 -2.087 -1.736 -3.464 -1.736 H 17.129 l -0.886 -3.413 c -0.704 -2.713 -3.153 -4.607 -5.956 -4.607 H 1 c -0.552 0 -1 0.448 -1 1 c 0 0.552 0.448 1 1 1 h 9.287 c 1.892 0 3.545 1.279 4.021 3.11 l 11.165 42.995 c 0.114 0.441 0.512 0.749 0.968 0.749 h 52.201 c 0.553 0 1 -0.447 1 -1 s -0.447 -1 -1 -1 H 27.214 l -2.398 -9.232 h 53.3 c 2.704 0 5.128 -1.812 5.894 -4.404 l 5.809 -19.649 C 90.21 23.918 89.961 22.528 89.138 21.425 z M 87.901 24.671 l -5.809 19.649 c -0.518 1.75 -2.152 2.972 -3.977 2.972 H 24.297 l -6.649 -25.602 h 68.025 c 0.74 0 1.418 0.34 1.861 0.933 C 87.977 23.215 88.111 23.961 87.901 24.671 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 35.47 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.762 0 6.823 3.061 6.823 6.822 S 39.232 78.331 35.47 78.331 z M 35.47 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 s 4.823 -2.163 4.823 -4.822 C 40.293 68.849 38.129 66.686 35.47 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                          <path d="M 68.27 78.331 c -3.762 0 -6.822 -3.061 -6.822 -6.822 s 3.061 -6.822 6.822 -6.822 c 3.763 0 6.823 3.061 6.823 6.822 S 72.032 78.331 68.27 78.331 z M 68.27 66.686 c -2.659 0 -4.822 2.163 -4.822 4.822 c 0 2.659 2.163 4.822 4.822 4.822 c 2.659 0 4.823 -2.163 4.823 -4.822 C 73.093 68.849 70.929 66.686 68.27 66.686 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+                      </g>
+                      </g>
+                          </svg>
+                          <div class="shoping-cart-count">
+                            <h6 class="bigcounter">{{ cart.item_count }}</h6>
+                          </div>
+                            </div>
+                      </a>
+                    </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </header>
 
@@ -126,6 +238,7 @@
 		  {
             "type": "text",
             "id": "welcome_shop",
+            "default":"90 Day Money Back Guarantee",
             "label": "Welcome Message!"
           },
           {
@@ -141,15 +254,1456 @@
           {
             "type": "checkbox",
             "id": "static_menu_enable",
-            "label": "Show\/hide",
+            "label": "Show or hide",
             "default": true
           }
 	]
   }
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
+<style>
+  .ma5menu__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    width: 100px;
+    height: 55px;
+    background-image: url("{{ section.settings.logo-2 | img_url: 'large' }}");
+    padding: 10px 0;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+</style>
+
+
+
+
 
 {% javascript %}
 {% endjavascript %}
+
+
+
+
+
+
+
+
+
+{% stylesheet %}
+.grid__item.one-quarter {
+  width: 30px;
+}
+
+.ma5menu {
+  display: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ma5menu *, .ma5menu *:after, .ma5menu *:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ma5menu--active .ma5menu__page {
+  margin-right: -17px;
+  height: 100%;
+  overflow: hidden;
+  -webkit-transform: translate3d(280px, 0, 0);
+  transform: translate3d(280px, 0, 0);
+  transition: -webkit-transform 0.3s ease-out 0s;
+  -o-transition: transform 0.3s ease-out 0s;
+  -webkit-transition: -webkit-transform 0.3s ease-out 0s;
+  transition: transform 0.3s ease-out 0s;
+  transition: transform 0.3s ease-out 0s, -webkit-transform 0.3s ease-out 0s;
+}
+
+@media (min-width: 768px) {
+  .ma5menu--active .ma5menu__page {
+    -webkit-transform: translate3d(360px, 0, 0);
+    transform: translate3d(360px, 0, 0);
+  }
+}
+.ma5menu > ul {
+  display: none;
+}
+
+.ma5menu__head {
+  padding: 0 5px;
+  border-bottom: 1px solid #6fa77f;
+  height: 73px;
+  text-align: center;
+  color: #ffffff;
+  background-color: transparent;
+  position: relative;
+}
+
+.ma5menu__header {
+  line-height: 35px;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.ma5menu__header a {
+  color: #ffc107;
+}
+
+.ma5menu__header a:hover {
+  color: #ffc107;
+}
+
+.ma5menu__close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z%22/%3E%3C/svg%3E");
+  background-size: 24px 24px;
+  background-position: 50% 50%;
+}
+
+.ma5menu__toggle:hover .ma5menu__close {
+  color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffc107%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z%22/%3E%3C/svg%3E");
+  background-color: transparent;
+}
+
+
+
+.ma5menu__home:hover .ma5menu__logo {
+  color: #ffc107;
+}
+
+.ma5menu__home {
+  font-weight: 700;
+  color: inherit;
+}
+
+.ma5menu__tools {
+  display: none;
+}
+
+.ma5menu__footer .ma5menu__tools {
+  display: block;
+}
+
+.ma5menu__footer {
+  padding: 20px 20px 30px 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: transparent;
+  text-transform: none;
+}
+
+.ma5menu__footer a {
+  color: #ffc107;
+}
+
+.ma5menu__footer a:hover {
+  color: #ffc107;
+}
+
+.ma5menu__toggle {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #000;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  width: 52px;
+  height: 38px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: none;
+  font-weight: 400;
+  padding: 8px 12px;
+  border-radius: 4px;
+  -o-transition: box-shadow 0.15s ease-in-out;
+  -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
+  transition: -webkit-box-shadow 0.15s ease-in-out;
+  transition: box-shadow 0.15s ease-in-out;
+  transition: box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.ma5menu__toggle:hover {
+  color: #ffffff;
+  background-color: #ef6c00;
+}
+
+.ma5menu__header .ma5menu__toggle {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.ma5menu__header .ma5menu__toggle:hover {
+  color: #ffc107;
+  background-color: transparent;
+}
+
+.ma5menu--left .ma5menu__header .ma5menu__toggle {
+  right: 0;
+}
+
+.ma5menu--right .ma5menu__header .ma5menu__toggle {
+  left: 0;
+}
+
+.ma5menu__icon-toggle {
+  display: inline-block;
+  position: absolute;
+  margin: auto;
+  top: -100%;
+  bottom: -100%;
+  left: -100%;
+  right: -100%;
+  vertical-align: top;
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M3%2018h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z%22/%3E%3C/svg%3E");
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.ma5menu__icon-up {
+  margin: 0;
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px 24px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23fff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M16.59%208.59L12%2013.17%207.41%208.59%206%2010l6%206%206-6z%22/%3E%3C/svg%3E");
+}
+
+.ma5menu__alert {
+  display: block;
+  text-align: center;
+  width: 280px;
+  height: 50px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  z-index: 500;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  background-image: -o-linear-gradient(top, rgba(14, 101, 182, 0) 0%, #0e65b6 50%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 101, 182, 0)), color-stop(50%, #0e65b6));
+  background-image: linear-gradient(to bottom, rgba(14, 101, 182, 0) 0%, #0e65b6 50%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 50px;
+  -o-transition: background-position 0.4s ease-in 0.3s;
+  -webkit-transition: background-position 0.4s ease-in 0.3s;
+  transition: background-position 0.4s ease-in 0.3s;
+  will-change: auto;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .ma5menu__alert {
+    width: 360px;
+  }
+}
+.ma5menu__container--scroll .ma5menu__alert {
+  background-position: 0 0;
+  -o-transition: background-position 0.4s ease-out;
+  -webkit-transition: background-position 0.4s ease-out;
+  transition: background-position 0.4s ease-out;
+  pointer-events: auto;
+}
+
+.ma5menu__alert-content {
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -o-transition: bottom 0.4s ease-in;
+  -webkit-transition: bottom 0.4s ease-in;
+  transition: bottom 0.4s ease-in;
+}
+
+.ma5menu__container--scroll .ma5menu__alert-content {
+  bottom: 0;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 3;
+  animation-iteration-count: 3;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: ma5-arrowDown;
+  animation-name: ma5-arrowDown;
+  -o-transition: bottom 0.4s ease-out 0.4s;
+  -webkit-transition: bottom 0.4s ease-out 0.4s;
+  transition: bottom 0.4s ease-out 0.4s;
+}
+
+.ma5menu__container {
+  -o-transition: none !important;
+  -webkit-transition: none !important;
+  transition: none !important;
+  position: fixed;
+  background-color: #000;
+  height: 100%;
+  top: 0;
+  line-height: 19px;
+  overflow: hidden;
+  border: none;
+  z-index: 10000;
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 767px) {
+  .ma5menu__container {
+    width: 280px;
+  }
+}
+@media (min-width: 768px) {
+  .ma5menu__container {
+    width: 360px;
+  }
+}
+.ma5menu--left .ma5menu__container {
+  -webkit-transform: translate3d(-280px, 0, 0);
+  transform: translate3d(-280px, 0, 0);
+  left: 0;
+}
+
+.ma5menu--right .ma5menu__container {
+  -webkit-transform: translate3d(280px, 0, 0);
+  transform: translate3d(280px, 0, 0);
+  right: -280px;
+}
+
+.ma5menu--ready.ma5menu--left .ma5menu__container {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie.ma5menu--ready.ma5menu--left .ma5menu__container {
+  -webkit-animation-name: ma5menuOut;
+  animation-name: ma5menuOut;
+}
+
+.ie.ma5menu--ready.ma5menu--left .ma5menu__container {
+  -webkit-animation-name: ma5menuOutIEphone;
+  animation-name: ma5menuOutIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie.ma5menu--ready.ma5menu--left .ma5menu__container {
+    -webkit-animation-name: ma5menuOutIEtablet;
+    animation-name: ma5menuOutIEtablet;
+  }
+}
+.ma5menu--ready.ma5menu--right .ma5menu__container {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie.ma5menu--ready.ma5menu--right .ma5menu__container {
+  -webkit-animation-name: ma5menuOutB;
+  animation-name: ma5menuOutB;
+}
+
+.ie.ma5menu--ready.ma5menu--right .ma5menu__container {
+  -webkit-animation-name: ma5menuOutBIEphone;
+  animation-name: ma5menuOutBIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie.ma5menu--ready.ma5menu--right .ma5menu__container {
+    -webkit-animation-name: ma5menuOutBIEtablet;
+    animation-name: ma5menuOutBIEtablet;
+  }
+}
+.ma5menu--active.ma5menu--left .ma5menu__container {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie.ma5menu--active.ma5menu--left .ma5menu__container {
+  -webkit-animation-name: ma5menuOutB;
+  animation-name: ma5menuOutB;
+}
+
+.ie.ma5menu--active.ma5menu--left .ma5menu__container {
+  -webkit-animation-name: ma5menuOutBIEphone;
+  animation-name: ma5menuOutBIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie.ma5menu--active.ma5menu--left .ma5menu__container {
+    -webkit-animation-name: ma5menuOutBIEtablet;
+    animation-name: ma5menuOutBIEtablet;
+  }
+}
+.ma5menu--active.ma5menu--right .ma5menu__container {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie.ma5menu--active.ma5menu--right .ma5menu__container {
+  -webkit-animation-name: ma5menuIn;
+  animation-name: ma5menuIn;
+}
+
+.ie.ma5menu--active.ma5menu--right .ma5menu__container {
+  -webkit-animation-name: ma5menuInIEphone;
+  animation-name: ma5menuInIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie.ma5menu--active.ma5menu--right .ma5menu__container {
+    -webkit-animation-name: ma5menuInIEtablet;
+    animation-name: ma5menuInIEtablet;
+  }
+}
+@media (min-width: 768px) {
+  .ma5menu--left .ma5menu__container {
+    -webkit-transform: translate3d(-360px, 0, 0);
+    transform: translate3d(-360px, 0, 0);
+    padding: 0;
+    left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .ma5menu--right .ma5menu__container {
+    -webkit-transform: translate3d(360px, 0, 0);
+    transform: translate3d(360px, 0, 0);
+    right: -360px;
+  }
+}
+.safari .ma5menu__container {
+  height: 100%;
+}
+
+.preload .ma5menu__container {
+  opacity: 0;
+  z-index: -1;
+}
+
+.ma5menu__panel {
+  display: none;
+  width: 280px;
+  height: 80%;
+  height: calc(100% - 60px);
+  position: absolute;
+  overflow: hidden;
+  overflow-y: auto;
+  top: 60px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  z-index: 100;
+  color: rgba(255, 255, 255, 0.1);
+  background-color: #000;
+  scrollbar-color: #0a4b87 #0e65b6;
+  scrollbar-width: thin;
+}
+
+@media (min-width: 768px) {
+  .ma5menu__panel {
+    width: 360px;
+  }
+}
+.ma5menu__panel.has-scrollbar {
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ma5menu__panel:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.ma5menu__panel::-webkit-scrollbar {
+  width: 9px;
+  background-color: #0d60ad;
+}
+
+.ma5menu__panel::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+  border-right: 3px solid #0d60ad;
+}
+
+.ma5menu__panel:first-of-type {
+  z-index: 160;
+}
+
+.ma5menu__panel--parent-leave, .ma5menu__panel--parent-enter {
+  z-index: 180;
+  display: block;
+}
+
+.ma5menu__panel--active-leave, .ma5menu__panel--active-enter {
+  z-index: 190;
+  display: block;
+}
+
+.ma5menu__panel--active-enter {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie .ma5menu__panel--active-enter {
+  -webkit-animation-name: ma5-panelIn;
+  animation-name: ma5-panelIn;
+}
+
+.ie .ma5menu__panel--active-enter {
+  -webkit-animation-name: ma5-panelInIEphone;
+  animation-name: ma5-panelInIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie .ma5menu__panel--active-enter {
+    -webkit-animation-name: ma5-panelInIEtablet;
+    animation-name: ma5-panelInIEtablet;
+  }
+}
+.ma5menu__panel--active-leave {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie .ma5menu__panel--active-leave {
+  -webkit-animation-name: ma5-panelOut;
+  animation-name: ma5-panelOut;
+}
+
+.ie .ma5menu__panel--active-leave {
+  -webkit-animation-name: ma5-panelOutIEphone;
+  animation-name: ma5-panelOutIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie .ma5menu__panel--active-leave {
+    -webkit-animation-name: ma5-panelOutIEtablet;
+    animation-name: ma5-panelOutIEtablet;
+  }
+}
+.ma5menu__panel--parent-enter {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie .ma5menu__panel--parent-enter {
+  -webkit-animation-name: ma5menuOut;
+  animation-name: ma5menuOut;
+}
+
+.ie .ma5menu__panel--parent-enter {
+  -webkit-animation-name: ma5menuOutIEphone;
+  animation-name: ma5menuOutIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie .ma5menu__panel--parent-enter {
+    -webkit-animation-name: ma5menuOutIEtablet;
+    animation-name: ma5menuOutIEtablet;
+  }
+}
+.ma5menu__panel--parent-leave {
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.noie .ma5menu__panel--parent-leave {
+  -webkit-animation-name: ma5menuOutB;
+  animation-name: ma5menuOutB;
+}
+
+.ie .ma5menu__panel--parent-leave {
+  -webkit-animation-name: ma5menuOutBIEphone;
+  animation-name: ma5menuOutBIEphone;
+}
+
+@media (min-width: 768px) {
+  .ie .ma5menu__panel--parent-leave {
+    -webkit-animation-name: ma5menuOutBIEtablet;
+    animation-name: ma5menuOutBIEtablet;
+  }
+}
+.ma5menu__panel.lvl-0 {
+  text-transform: uppercase;
+  margin-top: 13px;
+}
+
+.ma5menu__panel.lvl-1 {
+  text-transform: none;
+}
+
+.ma5menu__panel > ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ma5menu__panel > ul li {
+  position: relative;
+  font-size: 0;
+  padding-right: 0;
+  margin-bottom: 0;
+  line-height: 0;
+}
+
+.ma5menu__panel > ul li:first-of-type {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ma5menu__panel > ul li a,
+.ma5menu__panel > ul li .ma5menu__category {
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none !important;
+  width: 100%;
+  outline: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  letter-spacing: 0.3px;
+  -o-transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  -webkit-transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  padding: 15px 20px 15px 20px;
+  font-size: 15px;
+  line-height: 19px;
+  overflow: hidden;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  min-height: 50px;
+}
+
+.ma5menu__panel > ul li a {
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.ma5menu__panel > ul li a:hover {
+  color: #ffc107;
+  background-color: transparent;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.ma5menu__panel > ul li .ma5menu__category {
+  position: relative;
+  text-align: left;
+  background-position: calc(100% - 13px) 50%;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.ma5menu__panel > ul li .ma5menu__category:hover {
+  color: #ffc107;
+  background-color: transparent;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.ma5menu__panel > ul li .ma5menu__category.ma5menu__path {
+  color: #ffc107 !important;
+  background-color: transparent !important;
+}
+
+.ma5menu__panel > ul li .ma5menu__category.ma5menu__path:hover {
+  color: #ffc107 !important;
+  background-color: transparent !important;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.ma5menu__panel > ul li > .ma5menu__btn--enter + a {
+  padding-right: 60px;
+  margin-right: -50px;
+}
+
+.ma5menu__panel--active {
+  z-index: 170;
+  display: block;
+}
+
+.ma5menu__panel--active > ul li a,
+.ma5menu__panel--active > ul li .ma5menu__category {
+  pointer-events: auto;
+}
+
+.ma5menu__btn--enter, .ma5menu__btn--leave {
+  font-size: 13px;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  padding: 0;
+  top: 0;
+  height: 100%;
+  text-align: center;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px 24px;
+  -o-transition: background-color 0.3s ease-out;
+  -webkit-transition: background-color 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
+}
+
+.ma5menu__btn--enter:hover, .ma5menu__btn--leave:hover {
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.ma5menu__btn--enter {
+  z-index: 0;
+  left: auto;
+  right: 0;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%206L8.59%207.41%2013.17%2012l-4.58%204.59L10%2018l6-6z%22/%3E%3C/svg%3E");
+  width: 50px;
+}
+
+.ma5menu__btn--enter:hover {
+  color: #ffc107;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffc107%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%206L8.59%207.41%2013.17%2012l-4.58%204.59L10%2018l6-6z%22/%3E%3C/svg%3E");
+}
+
+.ma5menu__btn--enter:before {
+  content: "";
+  display: block;
+  width: 1px;
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: -2px;
+  background-color: transparent;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.ma5menu__btn--leave {
+  left: 0;
+  right: auto;
+  color: #ffffff;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
+  width: 50px;
+}
+
+.ma5menu__btn--leave:hover {
+  color: #ffc107;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffc107%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
+}
+
+.ma5menu__leave:hover .ma5menu__btn--leave {
+  color: #ffc107;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffc107%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
+}
+
+.ma5menu__btn--leave:before {
+  content: "";
+  display: block;
+  width: 1px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -2px;
+  background-color: transparent;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.ma5menu__leave {
+  font-size: 15px;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  display: block;
+  position: relative;
+  padding: 0 44px 0 44px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  height: 50px;
+  line-height: 50px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-right: -44px;
+}
+
+.ma5menu__leave:hover {
+  color: #ffc107;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ma5menu__leave + .ma5menu__btn--enter {
+  bottom: 0;
+  height: calc(100% - 50px);
+  top: auto;
+}
+
+.ma5menu__path {
+  color: #ffc107 !important;
+  background-color: transparent !important;
+}
+
+.ma5menu--overflow {
+  overflow-x: hidden !important;
+}
+
+.ma5menu--left:before, .ma5menu--right:before {
+  content: "";
+  display: block;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.01);
+  z-index: -1;
+  -o-transition: background-color 0.4s ease-out 0.5s, z-index 0.8s linear;
+  -webkit-transition: background-color 0.4s ease-out 0.5s, z-index 0.8s linear;
+  transition: background-color 0.4s ease-out 0.5s, z-index 0.8s linear;
+  width: 100%;
+}
+
+.ma5menu--active:before {
+  background-color: rgba(255, 255, 255, 0.6);
+  -o-transition: background-color 0.4s ease-in;
+  -webkit-transition: background-color 0.4s ease-in;
+  transition: background-color 0.4s ease-in;
+  z-index: 9000;
+}
+
+.ma5menu--active > body .container * {
+  -ms-touch-action: none;
+  touch-action: none;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .ma5menu--active > body * {
+    pointer-events: none;
+  }
+
+  .ma5menu--active > body .ma5menu__toggle {
+    pointer-events: auto;
+  }
+
+  .ma5menu--active > body .ma5menu__toggle * {
+    pointer-events: auto;
+  }
+
+  .ma5menu--active > body .ma5menu__container {
+    pointer-events: auto;
+  }
+
+  .ma5menu--active > body .ma5menu__container * {
+    pointer-events: auto;
+  }
+
+  .ma5menu--active > body .ma5menu__container .ma5menu__alert {
+    pointer-events: none;
+  }
+
+  .ma5menu--active > body .ma5menu__container--scroll {
+    pointer-events: auto;
+  }
+}
+@media (max-width: 1199px) {
+  .ma5menu--active.has-body-scrollbar {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: auto;
+    min-height: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+.ma5menu--active.ma5menu--left:before {
+  right: 0;
+}
+
+.ma5menu--active.ma5menu--right:before {
+  left: 0;
+}
+
+.ma5menu--swipe {
+  position: relative;
+  overflow-x: hidden !important;
+}
+
+.ma5menu--swipe body {
+  position: relative;
+}
+
+.ma5menu--swipe.ma5menu--left body {
+  -o-transition: left 0.5s ease-out;
+  -webkit-transition: left 0.5s ease-out;
+  transition: left 0.5s ease-out;
+  left: 0;
+}
+
+.ma5menu--swipe.ma5menu--right body {
+  -o-transition: right 0.5s ease-out;
+  -webkit-transition: right 0.5s ease-out;
+  transition: right 0.5s ease-out;
+  right: 0;
+}
+
+.ma5menu--swipe.ma5menu--active.ma5menu--left body {
+  left: 280px;
+}
+
+@media (min-width: 768px) {
+  .ma5menu--swipe.ma5menu--active.ma5menu--left body {
+    left: 360px;
+  }
+}
+.ma5menu--swipe.ma5menu--active.ma5menu--right body {
+  right: 280px;
+}
+
+@media (min-width: 768px) {
+  .ma5menu--swipe.ma5menu--active.ma5menu--right body {
+    right: 360px;
+  }
+}
+.ma5menu__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+@-webkit-keyframes ma5-panelIn {
+  0% {
+    -webkit-transform: translate3d(280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ma5-panelIn {
+  0% {
+    -webkit-transform: translate3d(280px, 0, 0);
+    transform: translate3d(280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes ma5-panelOut {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(280px, 0, 0);
+  }
+}
+@keyframes ma5-panelOut {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(280px, 0, 0);
+    transform: translate3d(280px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuIn {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+  }
+}
+@keyframes ma5menuIn {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuOut {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+  }
+}
+@keyframes ma5menuOut {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuOutB {
+  0% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ma5menuOutB {
+  0% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (min-width: 768px) {
+  @-webkit-keyframes ma5-panelIn {
+    0% {
+      -webkit-transform: translate3d(360px, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes ma5-panelIn {
+    0% {
+      -webkit-transform: translate3d(360px, 0, 0);
+      transform: translate3d(360px, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @-webkit-keyframes ma5-panelOut {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(360px, 0, 0);
+    }
+  }
+  @keyframes ma5-panelOut {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(360px, 0, 0);
+      transform: translate3d(360px, 0, 0);
+    }
+  }
+  @-webkit-keyframes ma5menuIn {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(-360px, 0, 0);
+    }
+  }
+  @keyframes ma5menuIn {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(-360px, 0, 0);
+      transform: translate3d(-360px, 0, 0);
+    }
+  }
+  @-webkit-keyframes ma5menuOut {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(-360px, 0, 0);
+    }
+  }
+  @keyframes ma5menuOut {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(-360px, 0, 0);
+    }
+  }
+  @-webkit-keyframes ma5menuOutB {
+    0% {
+      -webkit-transform: translate3d(-360px, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes ma5menuOutB {
+    0% {
+      -webkit-transform: translate3d(-360px, 0, 0);
+      transform: translate3d(-360px, 0, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+@-webkit-keyframes ma5-panelInIEphone {
+  0% {
+    -webkit-transform: translate3d(280px, 0, 0);
+    transform: translate3d(280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ma5-panelInIEphone {
+  0% {
+    -webkit-transform: translate3d(280px, 0, 0);
+    transform: translate3d(280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes ma5-panelOutIEphone {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(280px, 0, 0);
+    transform: translate3d(280px, 0, 0);
+  }
+}
+@keyframes ma5-panelOutIEphone {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(280px, 0, 0);
+    transform: translate3d(280px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuInIEphone {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+}
+@keyframes ma5menuInIEphone {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuOutIEphone {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+}
+@keyframes ma5menuOutIEphone {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuOutBIEphone {
+  0% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ma5menuOutBIEphone {
+  0% {
+    -webkit-transform: translate3d(-280px, 0, 0);
+    transform: translate3d(-280px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes ma5-panelInIEtablet {
+  0% {
+    -webkit-transform: translate3d(360px, 0, 0);
+    transform: translate3d(360px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ma5-panelInIEtablet {
+  0% {
+    -webkit-transform: translate3d(360px, 0, 0);
+    transform: translate3d(360px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes ma5-panelOutIEtablet {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(360px, 0, 0);
+    transform: translate3d(360px, 0, 0);
+  }
+}
+@keyframes ma5-panelOutIEtablet {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(360px, 0, 0);
+    transform: translate3d(360px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuInIEtablet {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-360px, 0, 0);
+    transform: translate3d(-360px, 0, 0);
+  }
+}
+@keyframes ma5menuInIEtablet {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-360px, 0, 0);
+    transform: translate3d(-360px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuOutIEtablet {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-360px, 0, 0);
+    transform: translate3d(-360px, 0, 0);
+  }
+}
+@keyframes ma5menuOutIEtablet {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-360px, 0, 0);
+    transform: translate3d(-360px, 0, 0);
+  }
+}
+@-webkit-keyframes ma5menuOutBIEtablet {
+  0% {
+    -webkit-transform: translate3d(-360px, 0, 0);
+    transform: translate3d(-360px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ma5menuOutBIEtablet {
+  0% {
+    -webkit-transform: translate3d(-360px, 0, 0);
+    transform: translate3d(-360px, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes ma5-arrowDown {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes ma5-arrowDown {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.ma5menu__alert {
+  background: #000;
+}
+
+.ma5menu__panel {
+  background: #000;
+}
+
+.ma5menu__panel--active ul li {
+  display: block;
+}
+
+.ma5menu__panel::-webkit-scrollbar-thumb {
+  border-right: none;
+  background-color: #000;
+}
+
+.ma5menu__panel::-webkit-scrollbar {
+  width: 9px;
+  background-color: #fff;
+}
+
+
+{% endstylesheet %}

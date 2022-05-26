@@ -1,0 +1,235 @@
+
+    <div class="user-cart-dawer">
+
+    
+        <!-- card - cart  -->
+        <div class="cart-drawer1 cart-drawer-right1"> 
+          <div class="cart-drawer-close-btn1">
+          <span class="svg d-inline-block">Your Cart</span>
+        
+              <div class="svg d-inline-block">
+                  <?xml version="1.0" encoding="iso-8859-1"?>
+                  <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="aqua" x="0px" y="0px"
+                       width="15px" height="20px"  viewBox="0 0 83 83"  xml:space="preserve">
+                  <g>
+                      <path d="M81,36.166H2c-1.104,0-2,0.896-2,2v6.668c0,1.104,0.896,2,2,2h79c1.104,0,2-0.896,2-2v-6.668
+                          C83,37.062,82.104,36.166,81,36.166z"/>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  <g>
+                  </g>
+                  </svg>
+                  
+              </div>
+          </div>
+          {% comment %} <div id="CartDrawer" class="drawer drawer--right">
+      
+            <div id="CartContainer"></div>
+          </div> {% endcomment %}
+
+          <div  {{ cursorStyle }} class="wish-cart margin cart-group-1 add-tocart-item">
+              <ul>
+
+                  {% for item in cart.items %}
+
+                    <li  class="d-flex">
+                        <div class="cart-image">
+                          <a href="{{ cart.item_url }}">
+                           
+                                <img src="{{ item | img_url:'small' }}" alt="">        
+                        
+                            </a>
+                        </div>
+                          <div class="cart-details">
+                             <div class="cart-with-close d-flex">
+                                <h6>
+                             {{ item.title }}
+                             </h6>
+                              <div class="cart-close-icon">
+                                <a class="remove" href="javascript:void(0);" onclick="Shopify.removeItem({{ item.variant.id }})">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="18px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/>
+                                  </svg>
+                                </a>
+                              </div>
+                             </div>
+                             <div class="cart-count d-flex">
+                              <div class="cart-count">{{ item.quantity }}</div> 
+                              <span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="12px"><path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"/>
+                                  </svg>
+    
+                              </span>
+                              <div class="cart-count-quentity">{{ item.price | money }}</div>
+                             </div>
+                          </div>
+    
+                      </li>
+                    {% endfor %}
+
+
+
+              </ul>
+          </div>
+          <div class="wish-item">
+              <div class="cat_bottom">
+                <p class="total">
+                  <strong>{{ 'cart.general.subtotal' | t }}:</strong>
+                  <span class="amount shopping-cart__total">{{ cart.total_price | money }}</span>
+                </p>
+                <p class="buttons">
+                  <a class="button wc-forward" href="/cart">{{ 'cart.general.view_cart' | t }}</a>
+                  <a class="button checkout wc-forward" href="/checkout">{{ 'cart.general.checkout' | t }}</a>
+                </p>
+              </div>
+            </div>
+
+
+          </div>
+      <!-- card - cart end  -->
+
+      <!-- card- user  -->
+      
+
+
+
+
+
+
+
+
+<div class="cart-drawer cart-drawer-right"> 
+  <div class="cart-drawer-close-btn">
+  <span class="svg d-inline-block">CLOSE</span>
+
+      <div class="svg d-inline-block">
+          <?xml version="1.0" encoding="iso-8859-1"?>
+          <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="aqua" x="0px" y="0px"
+               width="15px" height="20px"  viewBox="0 0 83 83"  xml:space="preserve">
+          <g>
+              <path d="M81,36.166H2c-1.104,0-2,0.896-2,2v6.668c0,1.104,0.896,2,2,2h79c1.104,0,2-0.896,2-2v-6.668
+                  C83,37.062,82.104,36.166,81,36.166z"/>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          </svg>
+          
+      </div>
+  </div>
+  <div class="cart-deawer-from">
+      <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 ">
+           <div class="d-flex from-control-ring">
+            <a href="#">  <i class="fas fa-life-ring"></i> <span> Lost your password?</span></a>
+           </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  </div>
+  <div class="cart-dewer-no-loging text-center">
+          <div class="no-user-icon">
+              <i class="far fa-user"></i>
+          </div>
+          <h6>No account yet?</h6>
+          <p>Easily manage and track your orders, subscriptions, and gain access to our exclusive rewards program.</p>
+
+          <a href="#" class="btn">Create an Account</a>
+  </div>
+  </div>
+
+      <!-- card- user end -->
+
+
+
+
+
+<style>
+    .wish-item {
+        position: absolute;
+        bottom: 97px;
+        text-align: center;
+        margin: 0 auto;
+        overflow: hidden;
+        left: 0;
+        right: 0;
+    
+    }
+    .cat_bottom p.total {
+        font-size: 19px;
+        color: #fff;
+    }
+    p.buttons a {
+        display: block;
+        background: #fff;
+        color: #000;
+        margin: 5px 5px;
+        padding: 8px;
+        text-transform: uppercase;
+    }
+</style>

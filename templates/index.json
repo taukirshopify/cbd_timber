@@ -1,8 +1,22 @@
 
   {
     "sections": {
+      "header":{
+        "type": "header",
+        "settings": {
+          
+        }
+        
+      },
       "home_bannar":{
         "type": "home_bannar",
+        "settings": {
+          
+        }
+        
+      },
+      "featured-product":{
+        "type": "featured-product",
         "settings": {
           
         }
@@ -67,8 +81,9 @@
    
   },
   "order": [
-
+"header",
     "home_bannar",
+    "featured-product",
     "home_our_review",
     "Home_text_running",
     "home_prodcuts",

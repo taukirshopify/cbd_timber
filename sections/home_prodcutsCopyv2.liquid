@@ -1,0 +1,108 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+{% assign sold_out = false %}
+{% endif %}
+
+
+{% assign variant = product.selected_or_first_available_variant %}
+
+{% if product.available %}
+{% assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" %}
+{% endif %} 
+
+
+<div class="product-wrapper">
+    <div class="container">
+        <div class="row">
+            {% assign collection = collections[section.settings.coll] %}
+        
+            <!-- single-product start -->
+            
+            {% for product in collection.products limit: section.settings.p_limit %}
+            
+            <div class="col-md-4 col-lg-3">
+                <div class="singel-product">
+                    <a href="{{product.url}}">
+                    <div class="product-image">
+
+                        {% if product.images.size > 1 %}
+                            <img class="prodcut-normal_image lazy" src="{{ product.featured_image.src | img_url: 'large' }}" alt="">
+                            {% for image in product.images limit: 1 offset: 1 %}
+                                <img class="prodcut-normal_hover lazy" src="{{ image.src | img_url: 'large' }}" alt="">
+                            {% endfor %}
+                            {% else %}
+                            <img class="lazy" alt="" src="{{ product.featured_image.src | img_url: 'large' }}">
+                            {% endif %}
+
+                            
+                            {% if on_sale %}
+                        <div class="prodcut-save-offer">
+                           
+                                <span class="onsale two"> {{ product.price | times: 100 | divided_by: product.compare_at_price | minus: 100 | abs }}% off </span>
+                               
+                        </div>
+                    
+                        <div class="prodcut-best-value-offer">
+                                <img src="./assets/images/best_save.png" alt="">
+                        </div>
+                    {% endif %}
+                    </div>
+                </a>
+                   <a href="{{ product.url | within: coll }}"> <h4>{{ product.title }}</h4> </a> 
+                    <div class="product-review d-flex align-items-center">
+                       <div class="product-review-star">
+                        <img src="./assets/images/product_review.png" alt="">
+                       </div>
+                       <p> 4.9/5 - 2,576 Reviews</p>
+                    </div>
+                    <p>Purify the skin from toxins and pollutants.</p>
+                   
+
+                    
+              
+                   
+                    </div>
+                </div>
+            {% endfor %}
+
+
+            <div class="col-12 text-center">
+                <div class="prodcut-shop-all">
+                    <a href="{{section.settings.url}}" class="btn">{{ section.settings.text }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+{% schema %}
+    {
+        "name": "Product Collection",
+        "class": "home_collection",
+        "settings": [
+            {
+                "type": "collection",
+                "id": "coll",
+                "label": "Select you product"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Button Title",
+                "default": "Shop all",
+               
+                "placeholder": "Shop all"
+            },
+            {
+                "type": "url",
+                "id": "url",
+                "label": "Button link"
+            }
+        ]
+    }
+{% endschema %}

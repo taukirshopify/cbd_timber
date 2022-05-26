@@ -1,0 +1,93 @@
+<div class="instafeed">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="insta-title text-center">
+                    <span>{{ section.settings.title_top }}  </span>
+                    <h2>{{ section.settings.title }}</h2>
+                    <p>{{ section.settings.p }}</p>
+                </div>
+            </div>
+           
+            {% for c in section.blocks %}
+            <div class="col-md-4 col-lg-3 col-sm-6 ">
+                <div class="intagram-feed">
+                <div class="singel-instagram-img">
+                    {{ c.settings.img | image_url: width: 300 | image_tag }}
+                    <div class="intagramicon text-center">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+               
+                </div>
+            </div>
+            {% endfor %}
+           
+          
+            <div class="col-12 text-center">
+                <div class="prodcut-shop-all">
+                    <a href="{{section.settings.url}}" class="btn">{{section.settings.shop}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% schema %}
+    {
+        "name": "Insta Feed",
+        "class": "insta",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title_top",
+                "label": "Select Top",
+                "default": "180,000+ FOLLOWERS",
+          
+                "placeholder": "180,000+ FOLLOWERS"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Select your Title",
+                "default": "HEMP LOVIN' BUDS",
+               
+                "placeholder": "HEMP LOVIN' BUDS"
+            },
+            {
+                "type": "text",
+                "id": "p",
+                "label": "Name your paragrap",
+                "default": "Hemp's taking over the skincare world. Join the 10,000s of us on the <br> road to glowing skin.",
+                "placeholder": "Hemp's taking over the skincare world. Join the 10,000s of us on the <br> road to glowing skin."
+            },{
+                "type": "text",
+                "id": "shop",
+                "label": "Select Your Text",
+                "default": "Shop all",
+                "placeholder": "Shop all"
+            },
+            {
+                "type": "url",
+                "id": "url",
+                "label": "Select you Link"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "insta_Feed",
+                "name": "insta_feed",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "img",
+                        "label": "Select you Image"
+                    }
+                ]
+            }
+        ]
+        
+    }
+{% endschema %}

@@ -13,7 +13,7 @@
  {% for c in section.blocks %}
      
                   <div class="singel-review-active text-center">
-                    <h3>"{{ c.settings.title }}"</h3>
+                    <h3>" {{ c.settings.text }} "</h3>
                     <div class="sinfel-review-image">
                         <img src="{{ c.settings.img  | image_url: width: 800}}" class="lazy" alt="">
                     </div>
