@@ -157,6 +157,7 @@
     "benefit": {
       "type": "home_benefit",
       "settings": {
+        "img": "shopify:\/\/shop_images\/left-image.jpg",
         "title": "WHY HEMP?",
         "p": "Hey Bud harnesses the power of hemp seed oil, full of omega-6 and omega-3 fatty acids in perfect ratio, like no other skincare ingredient that helps <b>clear acne, blackheads and blemishes.<\/b>"
       }
