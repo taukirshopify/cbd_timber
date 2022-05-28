@@ -164,6 +164,46 @@
     },
     "home_advace": {
       "type": "home_advace",
+      "blocks": {
+        "32997094-d4f5-4daf-8142-5c293205b89e": {
+          "type": "Singel_Item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/advance04_17855d20-177b-49ae-85a5-9d05a0feae7d.png",
+            "text": "No Nasties",
+            "text1": "100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG"
+          }
+        },
+        "c7d6ae9b-6c65-4f00-9b9c-aca7202e02f8": {
+          "type": "Singel_Item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/advance02.png",
+            "text": "No Nasties",
+            "text1": "100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG"
+          }
+        },
+        "ef03a9ac-76c9-4a30-9c5a-6128e0f5892f": {
+          "type": "Singel_Item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/advance03.png",
+            "text": "No Nasties",
+            "text1": "100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG"
+          }
+        },
+        "90fd92a0-2794-40d6-bfb7-03b51a706186": {
+          "type": "Singel_Item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/advance04.png",
+            "text": "No Nasties",
+            "text1": "100% Free of silicons, parabens, sulfates, petrolatum palm oil or PEG"
+          }
+        }
+      },
+      "block_order": [
+        "32997094-d4f5-4daf-8142-5c293205b89e",
+        "c7d6ae9b-6c65-4f00-9b9c-aca7202e02f8",
+        "ef03a9ac-76c9-4a30-9c5a-6128e0f5892f",
+        "90fd92a0-2794-40d6-bfb7-03b51a706186"
+      ],
       "settings": {
         "title": "HEY BUD'S ADVANTAGE"
       }
@@ -175,6 +215,17 @@
     },
     "instafeed": {
       "type": "home-instafeed",
+      "blocks": {
+        "31881c47-3a8f-48b6-8166-1397c9675069": {
+          "type": "insta_Feed",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/instagram.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "31881c47-3a8f-48b6-8166-1397c9675069"
+      ],
       "settings": {
         "title_top": "180,000+ FOLLOWERS",
         "title": "HEMP LOVIN' BUDS",
