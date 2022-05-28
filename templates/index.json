@@ -128,11 +128,25 @@
             "uid1": "@misschloelee.90",
             "par": "The first one was just before I tried it for the first time and the other one I just took now. I love how amazing my skin is becoming!"
           }
+        },
+        "bd92ee48-b953-407d-86e0-fc8ebb8c1aae": {
+          "type": "Singel_blog",
+          "settings": {
+            "blog_t": "Reduces <span>random breakouts <\/span>",
+            "bloga": "shopify:\/\/shop_images\/bud01.jpg",
+            "text": "Helena",
+            "uidt": "IG",
+            "uid": "@misschloelee.90",
+            "uidt1": "IG",
+            "uid1": "@misschloelee.90",
+            "par": "The first one was just before I tried it for the first time and the other one I just took now. I love how amazing my skin is becoming!"
+          }
         }
       },
       "block_order": [
         "4955d727-6cf3-41e9-b1f5-eea811249cdf",
-        "dbe06693-3c94-4a22-b225-8859b8393a84"
+        "dbe06693-3c94-4a22-b225-8859b8393a84",
+        "bd92ee48-b953-407d-86e0-fc8ebb8c1aae"
       ],
       "settings": {
         "section_t": "Reduces <span>random breakouts <\/span>",
