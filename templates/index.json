@@ -221,10 +221,31 @@
           "settings": {
             "img": "shopify:\/\/shop_images\/instagram.jpg"
           }
+        },
+        "430553d8-947b-456d-ba6f-9a46da313fa5": {
+          "type": "insta_Feed",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/instagram.jpg"
+          }
+        },
+        "2cafea80-8cd5-49ef-904e-c90b28f6353e": {
+          "type": "insta_Feed",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/instagram.jpg"
+          }
+        },
+        "11b1b816-2740-4685-9c4e-fbd99c51516d": {
+          "type": "insta_Feed",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/instagram.jpg"
+          }
         }
       },
       "block_order": [
-        "31881c47-3a8f-48b6-8166-1397c9675069"
+        "31881c47-3a8f-48b6-8166-1397c9675069",
+        "430553d8-947b-456d-ba6f-9a46da313fa5",
+        "2cafea80-8cd5-49ef-904e-c90b28f6353e",
+        "11b1b816-2740-4685-9c4e-fbd99c51516d"
       ],
       "settings": {
         "title_top": "180,000+ FOLLOWERS",
