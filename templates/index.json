@@ -33,6 +33,34 @@
     },
     "home_our_review": {
       "type": "home_our_review",
+      "blocks": {
+        "60662b32-0515-470a-a59c-9ecc533a7ac0": {
+          "type": "review",
+          "settings": {
+            "text": "Pores appear less congested and skin is calmed from redness or inflammation",
+            "img": "shopify:\/\/shop_images\/brand01.png"
+          }
+        },
+        "d2f9b082-3e25-4fab-8d12-013430a5aee1": {
+          "type": "review",
+          "settings": {
+            "text": "Pores appear less congested and skin is calmed from redness or inflammation",
+            "img": "shopify:\/\/shop_images\/brand03.png"
+          }
+        },
+        "fbb0d443-c273-4912-9215-8ef5c7c9c0bb": {
+          "type": "review",
+          "settings": {
+            "text": "Pores appear less congested and skin is calmed from redness or inflammation",
+            "img": "shopify:\/\/shop_images\/Black-Bloackify-logo.png"
+          }
+        }
+      },
+      "block_order": [
+        "60662b32-0515-470a-a59c-9ecc533a7ac0",
+        "d2f9b082-3e25-4fab-8d12-013430a5aee1",
+        "fbb0d443-c273-4912-9215-8ef5c7c9c0bb"
+      ],
       "settings": {
         "title": "Over 2,500 Reviews",
         "review": "★★★★★ 4.9\/5.0",
