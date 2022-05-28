@@ -5,7 +5,7 @@
       "settings": {
         "welcome_shop": "90 Day Money Back Guarantee",
         "logo-2": "shopify:\/\/shop_images\/Hlogo.png",
-        "header_top_menu": "",
+        "header_top_menu": "main-menu",
         "static_menu_enable": true
       }
     },
