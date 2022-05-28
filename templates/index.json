@@ -1,87 +1,97 @@
-
-  {
-    "sections": {
-      "header":{
-        "type": "header",
-        "settings": {
-          
-        }
-        
-      },
-      "home_bannar":{
-        "type": "home_bannar",
-        "settings": {
-          
-        }
-        
-      },
-      "featured-product":{
-        "type": "featured-product",
-        "settings": {
-          
-        }
-        
-      },
-    "Home_text_running":{
-      "type": "Home_text_running",
+{
+  "sections": {
+    "header": {
+      "type": "header",
       "settings": {
-        
+        "welcome_shop": "90 Day Money Back Guarantee",
+        "header_top_menu": "",
+        "static_menu_enable": true
       }
-      
     },
-    "home_our_review":{
+    "home_bannar": {
+      "type": "home_bannar",
+      "settings": {
+        "title": "IN JUST 10 MINUTES",
+        "home_bannar": "shopify:\/\/shop_images\/bannar01.jpg",
+        "home_bannar02": "shopify:\/\/shop_images\/bannar02.jpg",
+        "home_bannar_text_top": "Goodbye",
+        "home_bannar_text_top_moving": "Oily skin",
+        "home_bannar_text_last": "<br>and hello <b>  clearer skin.<\/b>",
+        "home_bannar_url": "shopify:\/\/collections",
+        "home_button_text": "SHOP AUSTRALIAN HEMP PRODUCTS"
+      }
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "settings": {
+        "collection_title": "",
+        "collection": "",
+        "p_limit": "3",
+        "col_item": "3"
+      }
+    },
+    "home_our_review": {
       "type": "home_our_review",
       "settings": {
-        
+        "title": "Over 2,500 Reviews",
+        "review": "★★★★★ 4.9\/5.0",
+        "btn": "See All ➞",
+        "link": ""
       }
-      
     },
-    "home_prodcuts":{
+    "Home_text_running": {
+      "type": "Home_text_running",
+      "settings": {
+      }
+    },
+    "home_prodcuts": {
       "type": "home_prodcuts",
       "settings": {
-        
+        "collection_title": "",
+        "collection": "",
+        "p_limit": "3",
+        "col_item": "3"
       }
-      
     },
-    "home_difference":{
+    "home_difference": {
       "type": "home_difference",
       "settings": {
-        
+        "section_t": "Reduces <span>random breakouts <\/span>",
+        "shop": "Shop all",
+        "shop_url": ""
       }
-      
     },
-    "benefit":{
+    "benefit": {
       "type": "home_benefit",
       "settings": {
-        
+        "title": "WHY HEMP?",
+        "p": "Hey Bud harnesses the power of hemp seed oil, full of omega-6 and omega-3 fatty acids in perfect ratio, like no other skincare ingredient that helps <b>clear acne, blackheads and blemishes.<\/b>"
       }
-      
     },
-    "home_advace":{
+    "home_advace": {
       "type": "home_advace",
       "settings": {
-        
+        "title": "HEY BUD'S ADVANTAGE"
       }
-      
     },
-    "home-newsletter":{
+    "home-newsletter": {
       "type": "home-newsletter",
       "settings": {
-        
       }
-      
     },
-    "instafeed":{
+    "instafeed": {
       "type": "home-instafeed",
       "settings": {
-        
+        "title_top": "180,000+ FOLLOWERS",
+        "title": "HEMP LOVIN' BUDS",
+        "p": "Hemp's taking over the skincare world. Join the 10,000s of us on the <br> road to glowing skin.",
+        "shop": "Shop all",
+        "url": ""
       }
-      
     }
-   
   },
   "order": [
-"header",
+    "header",
     "home_bannar",
     "featured-product",
     "home_our_review",
@@ -92,6 +102,5 @@
     "home_advace",
     "home-newsletter",
     "instafeed"
-
   ]
 }
