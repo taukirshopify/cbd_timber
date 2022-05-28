@@ -70,6 +70,24 @@
     },
     "Home_text_running": {
       "type": "Home_text_running",
+      "blocks": {
+        "1e39da12-9318-4e2a-99bb-5f618fc765bd": {
+          "type": "Running_text",
+          "settings": {
+            "text": "Design is not just what it looks like and feels like. Design is how it works."
+          }
+        },
+        "35cf94b0-e3f1-4192-a8a4-6648f35c5780": {
+          "type": "Running_text",
+          "settings": {
+            "text": "Design is not just what it looks like and feels like. Design is how it works."
+          }
+        }
+      },
+      "block_order": [
+        "1e39da12-9318-4e2a-99bb-5f618fc765bd",
+        "35cf94b0-e3f1-4192-a8a4-6648f35c5780"
+      ],
       "settings": {
       }
     },
